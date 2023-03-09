@@ -1,4 +1,18 @@
+// Assets
+$col_green: #4B9200;
+$col_orange: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+$col_yellow: #FFEE2E;
+$col_orange-grad: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
+$col_pink-grad: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
+$col_red: #D31414;
+$col_black-blue: #333B41;
+$col_gray: #767474;
+$col_gray-smoky: #ABABAB;
+$col_gray-light: #F1F3F2;
+$col_frosted-white: rgba(253, 253, 255, 0.52);
+
 html, body {
+	font-family: "Roboto", sans-serif;
 	margin: 0;
 	padding: 0;
 }
@@ -61,5 +75,89 @@ html, body {
 }
 .main {
 }
+.welcome {
+		height: 700px;
+		background-image: url(../../assets/images/panda.jpg);
+		background-position: center;
+		background-size: cover;
+
+		.container {
+			display: flex;
+			justify-content: right;
+			padding: 0 30px;
+		}
+
+		// .welcome__greeting-text
+
+		&__greeting-text {
+			width: 500px;
+			margin-top: 80px;
+			font-weight: 700;
+			font-size: 106.496px;
+			line-height: 75%;
+			text-align: center;
+			text-transform: uppercase;
+			color: #FFFFFF;
+			z-index: 1;
+
+		&::before {
+			content: '';
+			position: absolute;
+			width: 465px;
+			height: 465px;
+			left: calc(50% - 465px/2 + 239.5px);
+			top: 92px;
+			background: $col_orange;
+			border-radius: 50%;
+			z-index: -1;
+		}
+		}
+}
+
+.center-column-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 60px;
+}
+.col {
+
+		// .col_yellow
+
+		&_yellow {
+			color: $col_yellow;
+		}
+}
+.btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 298px;
+	height: 54px;
+	background: $col_orange;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 140%;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	cursor: pointer;
+	transition: 0.3s;
+
+	&:hover {
+		background: #E47209;
+	}
+	&:active {
+		background: $col_green;
+	}
+	&:disabled {
+		background: $col_gray;
+	}
+		// .btn_rounded
+
+		&_rounded {
+			border-radius: 25px;
+		}
+}
+
 .footer {
 }

@@ -1,4 +1,5 @@
 html, body {
+  font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -42,6 +43,79 @@ html, body {
 
 .designed {
   color: #FFFFFF;
+}
+
+.welcome {
+  height: 700px;
+  background-image: url(../../assets/images/panda.jpg);
+  background-position: center;
+  background-size: cover;
+}
+.welcome .container {
+  display: flex;
+  justify-content: right;
+  padding: 0 30px;
+}
+.welcome__greeting-text {
+  width: 500px;
+  margin-top: 80px;
+  font-weight: 700;
+  font-size: 106.496px;
+  line-height: 75%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  z-index: 1;
+}
+.welcome__greeting-text::before {
+  content: "";
+  position: absolute;
+  width: 465px;
+  height: 465px;
+  left: calc(50% - 232.5px + 239.5px);
+  top: 92px;
+  background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.center-column-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+.col_yellow {
+  color: #FFEE2E;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 298px;
+  height: 54px;
+  background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 140%;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #E47209;
+}
+.btn:active {
+  background: #4B9200;
+}
+.btn:disabled {
+  background: #767474;
+}
+.btn_rounded {
+  border-radius: 25px;
 }
 
 /*# sourceMappingURL=style.css.map */
