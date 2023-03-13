@@ -1,0 +1,91 @@
+body {
+}
+
+
+/// BUTTONS
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items:center;
+    padding: 15px 45px;
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: #292929;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.btn:hover {
+    background: #FDDCC4;
+}
+.btn__fill {
+    background: #F1CDB3;
+    &:active {
+        background: #F1CDB3;
+    }
+}
+.btn__transparent {
+    background: transparent;
+    border: 2px solid #F1CDB3;
+    padding: 13px 43px;
+    &:hover {
+        border: 2px solid #FDDCC4;
+    }
+    &:active {
+        background: #F1CDB3;
+        border: 2px solid #F1CDB3;
+    }
+}
+.btn-circle {
+    width: 52px;
+    height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    color: #292929;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    &.btn-circle__transparent {
+        background: transparent;
+        border: 2px solid #F1CDB3;
+        &:hover {
+            background: #FDDCC4;
+            border: 2px solid #FDDCC4;
+        }
+        &:active {
+            border: 2px solid #F1CDB3;
+            background: #F1CDB3;
+        }
+    }
+    &.btn-circle__inactive {
+        background: transparent;
+        border: 2px solid #CDCDCD;
+        &:hover {
+            background: transparent;
+            border: 2px solid #CDCDCD;
+        }
+    }
+    &.btn-circle__active {
+        background: #F1CDB3;
+        &:hover {
+            background: #FDDCC4;
+        }
+        &:active {
+            background: #F1CDB3;
+        }
+    }
+}
+
+
