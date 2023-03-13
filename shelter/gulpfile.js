@@ -1,4 +1,4 @@
-const {src, dest, series, watch} = require('gulp')
+const {src, dest, series, watch, task} = require('gulp')
 const sass = require('gulp-sass')(require('sass'));
 const concat = require('gulp-concat')
 const autoprefix = require('gulp-autoprefixer')
@@ -8,6 +8,14 @@ const include = require('gulp-file-include')
 
 const htmlmin = require('gulp-htmlmin')
 const sync = require('browser-sync').create()
+const imagemin = require('gulp-imagemin');
+
+
+function img () {
+    return src('src/assets/**/*.{jpg,png,gif,svg}')
+      .pipe(imagemin())
+      .pipe(dest('dist'));
+}
 
 function html() {
     return src('src/pages/**/*.html')
@@ -29,10 +37,9 @@ function serve() {
             server: './dist'
         }
     )
-
-    watch('src/pages/**/*.html', series(html)).on('change', sync.reload)
-    watch('src/pages/**/*.scss', series(scss)).on('change', sync.reload)
+    watch('src/pages/**/*.html', series(html)).on('all', sync.reload)
+    watch('src/pages/**/*.scss', series(scss)).on('all', sync.reload)
 
 }
-exports.build = series(scss, html)
-exports.serve = series(scss, html, serve)
+exports.build = series(scss, html, img)
+exports.serve = series(scss, html, img, serve)
