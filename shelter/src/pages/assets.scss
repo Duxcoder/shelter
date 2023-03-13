@@ -1,122 +1,145 @@
-p, ul, li, h1, h2, h3, h4 {
-    margin: 0;
-    padding: 0;
+p,
+ul,
+li,
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+}
+h3 {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+.text {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 160%;
+  color: #4c4c4c;
 }
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
-ul, li {
-    list-style-type: none;
+ul,
+li {
+  list-style-type: none;
 }
 /// MASK
 .bg-pattern::after {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    content: "";
-    pointer-events: none;
-    background: url(images/background.png);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  content: "";
+  pointer-events: none;
+  background: url(images/background.png);
 }
 
 .pos-rel-inx-2 {
-    position: relative;
-    z-index: 2;
+  position: relative;
+  z-index: 2;
 }
 /// CONTAINTER
 
 .container {
-    margin: 0 auto;
-    height: 100%;
-    max-width: 1280px;
-    padding: 0 40px;
+  margin: 0 auto;
+  height: 100%;
+  max-width: 1280px;
+  padding: 0 40px;
+  box-sizing: border-box;
 }
 
 /// BUTTONS
 
 .btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items:center;
-    padding: 15px 45px;
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 130%;
-    letter-spacing: 0.06em;
-    color: #292929;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 45px;
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #292929;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 .btn:hover {
-    background: #FDDCC4;
+  background: #fddcc4;
 }
 .btn__fill {
-    background: #F1CDB3;
-    &:active {
-        background: #F1CDB3;
-    }
+  background: #f1cdb3;
+  &:active {
+    background: #f1cdb3;
+  }
 }
 .btn__transparent {
-    background: transparent;
-    border: 2px solid #F1CDB3;
-    padding: 13px 43px;
-    &:hover {
-        border: 2px solid #FDDCC4;
-    }
-    &:active {
-        background: #F1CDB3;
-        border: 2px solid #F1CDB3;
-    }
+  background: transparent;
+  border: 2px solid #f1cdb3;
+  padding: 13px 43px;
+  &:hover {
+    border: 2px solid #fddcc4;
+  }
+  &:active {
+    background: #f1cdb3;
+    border: 2px solid #f1cdb3;
+  }
 }
 .btn-circle {
-    width: 52px;
-    height: 52px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 115%;
-    letter-spacing: 0.06em;
-    color: #292929;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    &.btn-circle__transparent {
-        background: transparent;
-        border: 2px solid #F1CDB3;
-        &:hover {
-            background: #FDDCC4;
-            border: 2px solid #FDDCC4;
-        }
-        &:active {
-            border: 2px solid #F1CDB3;
-            background: #F1CDB3;
-        }
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #292929;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &.btn-circle__transparent {
+    background: transparent;
+    border: 2px solid #f1cdb3;
+    &:hover {
+      background: #fddcc4;
+      border: 2px solid #fddcc4;
     }
-    &.btn-circle__inactive {
-        background: transparent;
-        border: 2px solid #CDCDCD;
-        &:hover {
-            background: transparent;
-            border: 2px solid #CDCDCD;
-        }
+    &:active {
+      border: 2px solid #f1cdb3;
+      background: #f1cdb3;
     }
-    &.btn-circle__active {
-        background: #F1CDB3;
-        &:hover {
-            background: #FDDCC4;
-        }
-        &:active {
-            background: #F1CDB3;
-        }
+  }
+  &.btn-circle__inactive {
+    background: transparent;
+    border: 2px solid #cdcdcd;
+    &:hover {
+      background: transparent;
+      border: 2px solid #cdcdcd;
     }
+  }
+  &.btn-circle__active {
+    background: #f1cdb3;
+    &:hover {
+      background: #fddcc4;
+    }
+    &:active {
+      background: #f1cdb3;
+    }
+  }
 }
-
-

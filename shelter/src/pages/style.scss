@@ -1,6 +1,9 @@
+/// Header
+
 .header {
   position: relative;
-  height: 908px;
+  height: 75vw;
+  max-height: 908px;
   background-image: radial-gradient(
     100% 215.42% at 0% 0%,
     #5b483a 0%,
@@ -68,13 +71,14 @@
     display: flex;
     justify-content: space-between;
     height: calc(100% - 180px);
+    align-items: center;
     .start-screen__section {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      width: 460px;
+      max-width: 460px;
       gap: 42px;
-      margin-top: 163px;
+      margin-bottom: 6.6%;
       h1 {
         display: inline-flex;
         width: 310px;
@@ -95,13 +99,47 @@
       }
     }
     .start-screen__dog {
-      background-image: url('images/mainDog.png');
-      width: calc(100% - 460px);
+      background-image: url("images/mainDog.png");
+      width: calc(100% - 460px - 24px);
+      margin-left: 24px;
+      min-width: 350px;
       height: 100%;
       background-repeat: no-repeat;
       background-position-y: bottom;
       background-position-x: right;
       background-size: contain;
+    }
+  }
+}
+/// Main
+/// About
+
+.main {
+  .about {
+    height: 588px;
+    .about-section {
+      display: flex;
+      flex-wrap: wrap-reverse;
+      justify-content: center;
+      gap: 120px;
+      padding: 80px 20px 100px 20px;
+      .about-section__pictures {
+        width: calc(100% - 550px);
+        min-width: 240px;
+        max-width: 300px;
+        object-fit: contain;
+      }
+      .about-section__content {
+        display: flex;
+        flex-direction: column;
+        width: 430px;
+        justify-content: start;
+        gap: 25px;
+        padding: 14px 0;
+        .about-section__title {
+          width: 370px;
+        }
+      }
     }
   }
 }
