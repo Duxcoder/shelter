@@ -12,18 +12,20 @@ const imagemin = require('gulp-imagemin');
 
 
 function img () {
-    return src('src/assets/**/*.{jpg,png,gif,svg}')
+    return src(['src/assets/images/*.{jpg,png,gif,svg}', 'src/assets/icons/*.{jpg,png,gif,svg}'])
       .pipe(imagemin())
-      .pipe(dest('dist'));
+      .pipe(dest('dist/images'));
 }
 
 function html() {
-    return src('src/pages/**/*.html')
+    return src('src/pages/*.html')
     .pipe(dest('dist'))
+    .pipe(src('src/pages/pets/*.html'))
+    .pipe(dest('dist/pets'))
 }
 
 function scss() {
-    return src('src/pages/**/*.scss')
+    return src(['src/pages/*.scss', 'src/pages/pets/*.scss'])
     .pipe(sass())
     .pipe(autoprefix())
     .pipe(csso())
@@ -37,8 +39,8 @@ function serve() {
             server: './dist'
         }
     )
-    watch('src/pages/**/*.html', series(html)).on('all', sync.reload)
-    watch('src/pages/**/*.scss', series(scss)).on('all', sync.reload)
+    watch(['src/pages/*.html', 'src/pages/pets/*.html'], {usePolling: true}, series(html)).on('all', sync.reload)
+    watch(['src/pages/*.scss', 'src/pages/pets/*.scss'], {usePolling: true}, series(scss)).on('all', sync.reload)
 
 }
 exports.build = series(scss, html, img)
