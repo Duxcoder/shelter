@@ -1,14 +1,10 @@
 /// Header
-
 .header {
-  position: relative;
-  height: 75vw;
-  max-height: 908px;
-  background-image: radial-gradient(
-    100% 215.42% at 0% 0%,
-    #5b483a 0%,
-    #262425 100%
-  );
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 3;
   .top-bar {
     display: flex;
     align-items: center;
@@ -66,11 +62,26 @@
       }
     }
   }
+}
 
+
+/// Main
+/// Not-only
+
+.not-only {
+  position: relative;
+  height: 75vw;
+  max-height: 908px;
+  background-image: radial-gradient(
+    100% 215.42% at 0% 0%,
+    #5b483a 0%,
+    #262425 100%
+  );
   .start-screen {
     display: flex;
     justify-content: space-between;
     height: calc(100% - 180px);
+    padding-top: 180px;
     align-items: center;
     .start-screen__section {
       display: flex;
@@ -111,7 +122,7 @@
     }
   }
 }
-/// Main
+
 /// About
 
 .main {
