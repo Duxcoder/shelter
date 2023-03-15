@@ -39,8 +39,8 @@ function serve() {
             server: './dist'
         }
     )
-    watch(['src/pages/*.html', 'src/pages/pets/*.html'], {usePolling: true}, series(html)).on('all', sync.reload)
-    watch(['src/pages/*.scss', 'src/pages/pets/*.scss'], {usePolling: true}, series(scss)).on('all', sync.reload)
+    watch(['src/pages/*.html', 'src/pages/pets/*.html'], series(html)).on('all', sync.reload)
+    watch(['src/pages/*.scss', 'src/pages/pets/*.scss'], series(scss)).on('all', sync.reload)
 
 }
 exports.build = series(scss, html, img)

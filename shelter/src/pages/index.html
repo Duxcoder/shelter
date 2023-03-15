@@ -16,7 +16,7 @@
       <div class="container">
         <div class="top-bar">
           <div class="top-bar__logo-box">
-            <a class="top-bar__logo" href="/">Cozy House</a>
+            <a class="top-bar__logo" href="#">Cozy House</a>
             <p class="top-bar__descr">Shelter for pets in Boston</p>
           </div>
           <nav class="navigation">
@@ -39,11 +39,11 @@
       </div>
     </header>
     <main class="main">
-      <section class="not-only bg-pattern">
+      <section class="not-only-section bg-pattern">
         <div class="container pos-rel-inx-2">
-          <div class="start-screen">
-            <div class="start-screen__section">
-              <h1>Not only people need a house</h1>
+          <div class="not-only">
+            <div class="start-screen">
+              <h1 class="start-screen__title">Not only people need a house</h1>
               <p class="start-screen__descr">
                 We offer to give a chance to a little and nice puppy with an
                 extremely wide and open heart. He or she will love you more than
@@ -51,7 +51,7 @@
               </p>
               <a href="/" class="btn btn__fill">Make a friend</a>
             </div>
-            <div class="start-screen__dog"></div>
+            <div class="start-screen-dog"></div>
           </div>
         </div>
       </section>
@@ -85,7 +85,130 @@
           </div>
         </div>
       </section>
+      <section class="our-friends-section">
+        <div class="container">
+          <div class="our-friends">
+            <h3 class="our-friends__title">
+              Our friends who are&nbsp;looking for a house
+            </h3>
+            <div class="our-friends__slider">
+              <div class="slider__pagination">
+                <button
+                  class="btn-circle btn-circle__transparent arrow-left"
+                ></button>
+                <button
+                  class="btn-circle btn-circle__transparent arrow-right"
+                ></button>
+              </div>
+              <div class="slider__items">
+                <div class="slider__item card">
+                  <img src="images/kate.png" alt="pet" class="card__pic" />
+                  <div class="card__title">Katrine</div>
+                  <button class="btn btn__transparent">Learn more</button>
+                </div>
+                <div class="slider__item card">
+                  <img src="images/jen.png" alt="pet" class="card__pic" />
+                  <div class="card__title">Jennifer</div>
+                  <button class="btn btn__transparent">Learn more</button>
+                </div>
+                <div class="slider__item card">
+                  <img src="images/woo.png" alt="pet" class="card__pic" />
+                  <div class="card__title">Woody</div>
+                  <button class="btn btn__transparent">Learn more</button>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn__fill">Get to know the rest</button>
+          </div>
+        </div>
+      </section>
+      <section class="you-can-help-section">
+        <div class="container">
+          <div class="you-can-help">
+            <h3 class="you-can-help__title">How you can help our shelter</h3>
+            <div class="you-can-help__items">
+              <div class="you-can-help__item item_food">
+                <span class="item_title">Pet food</span>
+              </div>
+              <div class="you-can-help__item item_transport">
+                <span class="item_title">Transportation</span>
+              </div>
+              <div class="you-can-help__item item_toys">
+                <span class="item_title">Toys</span>
+              </div>
+              <div class="you-can-help__item item_bowls">
+                <span class="item_title">Bowls and cups</span>
+              </div>
+              <div class="you-can-help__item item_shampoo">
+                <span class="item_title">Shampoos</span>
+              </div>
+              <div class="you-can-help__item item_vitamins">
+                <span class="item_title">Vitamins</span>
+              </div>
+              <div class="you-can-help__item item_medic">
+                <span class="item_title">Medicines</span>
+              </div>
+              <div class="you-can-help__item item_collars">
+                <span class="item_title">Collars / leashes</span>
+              </div>
+              <div class="you-can-help__item item_sleep">
+                <span class="item_title">Sleeping areas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="donation-section">
+        <div class="container">
+          <div class="donation">
+            <div class="donation__dog"></div>
+            <div class="donation__content">
+              <h3 class="donation__title">You can also make a donation</h3>
+              <span class="donation__bank-name"
+                >Name of the bank / Type of bank account</span
+              >
+              <a href="#" class="donation__bank-card">
+                8380 2880 8028 8791 7435
+              </a>
+              <div class="donation__legal-info">
+                Legal information and lorem ipsum dolor sit amet, consectetur
+                adipiscing elit. Maecenas a ipsum at libero sagittis dignissim
+                sed ac diam. Praesent ultrices maximus tortor et vulputate.
+                Interdum et malesuada fames ac ante ipsum primis in faucibus.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-    <div class="footer"></div>
+    <footer class="footer bg-pattern">
+      <div class="container pos-rel-inx-2">
+        <div class="footer-content">
+          <div class="footer-content__questions footer-content__item">
+            <h3 class="footer-content__title">For questions and suggestions</h3>
+            <a href="mailto:email@shelter.com" class="footer-content__item-link">
+              <span class="footer-content__icon i_mail"></span>
+              <span class="footer-content__text">email@shelter.com</span>
+            </a>
+            <a href="tel:+13 674 567 75 54" class="footer-content__item-link">
+              <span class="footer-content__icon i_tel"></span>
+              <span class="footer-content__text">+13 674 567 75 54</span>
+            </a>
+          </div>
+          <div class="footer-content__address footer-content__item">
+            <h3 class="footer-content__title">We are waiting for your visit</h3>
+            <a href="#" class="footer-content__item-link">
+              <span class="footer-content__icon i_map"></span>
+              <span class="footer-content__text">1 Central Street, Boston (entrance from the store)</span>
+            </a>
+            <a href="#" class="footer-content__item-link">
+              <span class="footer-content__icon i_map"></span>
+              <span class="footer-content__text">18 South Park, London </span>
+            </a>
+          </div>
+          <div class="footer-content__dog"></div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

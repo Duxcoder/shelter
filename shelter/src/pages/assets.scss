@@ -8,6 +8,16 @@ h4 {
   margin: 0;
   padding: 0;
 }
+h1 {
+    display: inline-flex;
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 130%;
+    color: #ffffff;
+  }
+
 h3 {
   font-family: "Georgia";
   font-style: normal;
@@ -141,5 +151,35 @@ li {
     &:active {
       background: #f1cdb3;
     }
+  }
+}
+
+/// Card
+
+.card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 270px;
+  gap: 30px;
+  background: #fafafa;
+  border-radius: 9px;
+  box-sizing: border-box;
+  padding-bottom: 30px;
+  .card__pic {
+  }
+  .card__title {
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.06em;
+    color: #545454;
   }
 }
