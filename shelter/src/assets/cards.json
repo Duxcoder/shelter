@@ -1,0 +1,58 @@
+[
+  {
+    "picture": "images/katrine.png",
+    "name": "Katrine",
+    "alt": "Pet Katrine",
+    "link": "katrine",
+    "id": 0
+  },
+  {
+    "picture": "images/jennifer.png",
+    "name": "Jennifer",
+    "alt": "Pet Jennifer",
+    "link": "jennifer",
+    "id": 1
+  },
+  {
+    "picture": "images/woody.png",
+    "name": "Woody",
+    "alt": "Pet Woody",
+    "link": "woody",
+    "id": 2
+  },
+  {
+    "picture": "images/sophia.png",
+    "name": "Sophia",
+    "alt": "Pet Sophia",
+    "link": "sophia",
+    "id": 3
+  },
+  {
+    "picture": "images/timmy.png",
+    "name": "Timmy",
+    "alt": "Pet Timmy",
+    "link": "timmy",
+    "id": 4
+  },
+  {
+    "picture": "images/charly.png",
+    "name": "Charly",
+    "alt": "Pet Charly",
+    "link": "charly",
+    "id": 5
+  },
+  {
+    "picture": "images/scarlett.png",
+    "name": "Scarlett",
+    "alt": "Pet Scarlett",
+    "link": "scarlett",
+    "id": 6
+  },
+  {
+    "picture": "images/Freddie.png",
+    "name": "Freddie",
+    "alt": "Pet Freddie",
+    "link": "freddie",
+    "id": 7
+  }
+]

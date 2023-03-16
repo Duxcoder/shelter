@@ -169,6 +169,10 @@ li {
   box-sizing: border-box;
   padding-bottom: 30px;
   .card__pic {
+    width: 270px;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 9px 9px 0 0;
   }
   .card__title {
     font-family: "Georgia";
