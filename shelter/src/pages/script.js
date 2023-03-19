@@ -14,29 +14,50 @@ class Cards {
 
     }
 
-    createRandomCards(n, last = []) {
-        if (this.cards.length === 0) {
-            console.log('Cards not found')
-            return null
-        } else {
-            let cards = [];
-            let lengthCards = cards.length
-            let i = 0
-            while (cards.length < n) {
-                i++
-                if (i > 1000) return console.log('error loop', cards)
-                const num = Math.floor(Math.random() * ((this.cards.length - 1) + 1));
-                console.log(num)
-                if (n > this.cards.length && cards.length >= this.cards.length - 1) {
-                    cards.push(cards.at(-lengthCards))
-                    lengthCards = cards.length - 1;
-                }
-                if (!cards.includes(this.cards[num]) && !last.includes(this.cards[num])) {
-                    cards.push(this.cards[num]);
-                }
+    createRandomCards(n, exclusionCards = []) {
+        // if (this.cards.length === 0) {
+        //     console.log('Cards not found')
+        //     return null
+        // } else {
+        //     let cards = [];
+        //     let lengthCards = cards.length
+        //     let i = 0
+        //     let log = []
+        //     while (cards.length < n) {
+        //         i++
+        //         if (i > 1000) return console.log('error loop', cards)
+        //         const num = Math.floor(Math.random() * ((this.cards.length - 1) + 1));
+        //         if (n > this.cards.length && cards.length >= this.cards.length - 1) {
+        //             cards.push(cards.at(-lengthCards))
+        //             lengthCards = cards.length - 1;
+        //         }
+        //         if (!cards.includes(this.cards[num]) && !last.includes(this.cards[num])) {
+        //             cards.push(this.cards[num]);
+        //         }
+        //         log.push(i + ' ' + num + cards.length)
+        //     }
+        //     console.log(log)
+        //     return cards
+        // }
+
+        let cards = [];
+        const rNum = () => Math.floor(Math.random() * this.cards.length);
+        let random = rNum();
+        while (cards.length < Math.min(n, this.cards.length)) {
+            if (!cards.includes(this.cards[random])) {
+                cards.push(this.cards[random]);
             }
-            return cards
+            random = rNum();
         }
+        for (let i = 0; cards.length < n; i++) {
+            cards.push(cards[i])
+        }
+        const hasMatch = exclusionCards.some(card => cards.includes(card));
+
+        if (hasMatch) {
+            return this.createRandomCards(n, exclusionCards)
+        }
+        return cards
     }
 
     getCards() {
@@ -62,25 +83,31 @@ placesForCards = checkWindowSize()
 window.addEventListener('resize', (e) => {
     let prevPlaces = placesForCards;
     placesForCards = checkWindowSize()
-    prevPlaces !== placesForCards && (console.log('change', placesForCards))
+    prevPlaces !== placesForCards && (slider.startSlider(cards.createRandomCards(placesForCards)))
 });
+
+const arrowRight = document.querySelector('.arrow-right')
+const arrowLeft = document.querySelector('.arrow-left')
 
 class Slider {
     constructor(parentContainerClass) {
         this.$parentContainer = document.querySelector(parentContainerClass);
         this.$cardsOnPage = [];
         this.cardsOnPage = [];
-        this.width = 0;
+        this.left = 0;
         this.translateX = 0;
     }
     startSlider(cards) {
         this.$parentContainer.innerHTML = '';
+        this.$parentContainer.style.transform = `translateX(${this.translateX}px)`
 
         cards.forEach((card) => {
             this.renderCard(card)
         })
     }
+    sliderUpdate(placesCards){
 
+    }
     createHtmlCard(card) {
         const { picture, name, link, alt } = card
         const $card = document.createElement('div');
@@ -92,35 +119,18 @@ class Slider {
         `
         return $card
     }
-    renderCard(card) {
+    renderCard(card, next = true) {
         const $card = this.createHtmlCard(card)
-        this.cardsOnPage.push(card);
-        this.$cardsOnPage.push($card);
-        this.$parentContainer.append($card)
+        next ? this.cardsOnPage.push(card) : this.cardsOnPage.unshift(card);
+        next ? this.$cardsOnPage.push($card) : this.$cardsOnPage.unshift($card);
+        next ? this.$parentContainer.append($card) : this.$parentContainer.prepend($card)
+
     }
 
     nextCard() {
-        // const addOne = () => {
-        //     const lastCard = this.cardsOnPage.at(-1)
-        //     let index = cards.getCards().findIndex( item => item === lastCard)
-        //     index === cards.getCards().length - 1 ? index = 0 : index++
-        //     const newCard = cards.getCard(index);
-        //     this.renderCard(newCard)
-
-        // }
-        // const lastCard = this.cardsOnPage.at(-1)
-        ///
-        // let index = cards.getCards().findIndex(item => item === lastCard)
-        // index === cards.getCards().length - 1 ? index = 0 : index++
-        // const newCard1 = cards.getCard(index);
-        // index === cards.getCards().length - 1 ? index = 0 : index++
-        // const newCard2 = cards.getCard(index);
-        // index === cards.getCards().length - 1 ? index = 0 : index++
-        // const newCard3 = cards.getCard(index);
-        ///
-        const setTranslate = (translateX, width) => {
+        const setTranslate = (translateX, left) => {
             this.translateX -= translateX
-            this.width = this.$parentContainer.clientWidth + width
+            this.left += left;
             this.$parentContainer.style.transform = `translateX(${this.translateX}px)`
         }
         const renderNextCard = (nLastCards) => {
@@ -135,42 +145,69 @@ class Slider {
                 this.cardsOnPage.shift();
             }
         }
-        // if (placesForCards === 3) setTranslate(360, 1000)
-        // if (placesForCards === 6) setTranslate(720, 1600)
-        if (placesForCards === 9) setTranslate(1080, 2160)
-
-
+        if (placesForCards === 3) setTranslate(360, 360)
+        if (placesForCards === 6) setTranslate(620, 620)
+        if (placesForCards === 9) setTranslate(1080, 1080)
+        const tmpFun = arrowRight.onclick
+        arrowRight.onclick = null
         setTimeout(() => {
-            this.$parentContainer.style.width = this.width + 'px'
+            this.$parentContainer.style.left = this.left + 'px'
             this.$parentContainer.style.transition = 'none';
-            // this.renderCard(newCard1)
-            // this.renderCard(newCard2)
-            // this.renderCard(newCard3)
-            // if (placesForCards === 3) renderNextCard(1)
-            // if (placesForCards === 6) renderNextCard(2)
+            if (placesForCards === 3) renderNextCard(1)
+            if (placesForCards === 6) renderNextCard(2)
             if (placesForCards === 9) renderNextCard(3)
-            // const $card1 = this.$cardsOnPage.shift();
-            // const $card2 = this.$cardsOnPage.shift();
-            // const $card3 = this.$cardsOnPage.shift();
-            // this.$parentContainer.removeChild($card1);
-            // this.$parentContainer.removeChild($card2);
-            // this.$parentContainer.removeChild($card3);
-            // this.cardsOnPage.shift();
-            // this.cardsOnPage.shift();
-            // this.cardsOnPage.shift();
+            arrowRight.onclick = tmpFun
         }, 700)
         this.$parentContainer.style.transition = 'all 0.7s ease-in-out';
-
     }
 
-
-
     prevCard() {
+        const setTranslate = (translateX, left) => {
+            this.translateX += translateX
+            this.left -= left;
+            this.$parentContainer.style.transform = `translateX(${this.translateX}px)`
+        }
+        const renderPrevCard = (nFirstCards) => {
+            const firstCardsOnPage = this.cardsOnPage.slice(0, 3);
+            console.log('FirstCardsOnPage:' + ' ', firstCardsOnPage)
+            const newCards = cards.createRandomCards(nFirstCards, firstCardsOnPage);
+            newCards.forEach(card => this.renderCard(card, false))
+            for (let i = 0; i < nFirstCards; i++) {
+                this.$cardsOnPage.pop();
+                const lastCard = this.$parentContainer.lastChild;
+                this.$parentContainer.removeChild(lastCard);
+                this.cardsOnPage.pop();
+            }
+        }
+        if (placesForCards === 3) setTranslate(360, 360);
+        if (placesForCards === 6) setTranslate(620, 620);
+        if (placesForCards === 9) setTranslate(1080, 1080);
+
+        const tmpFun = arrowLeft.onclick
+        arrowLeft.onclick = null
+        setTimeout(() => {
+            this.$parentContainer.style.left = this.left + 'px'
+            this.$parentContainer.style.transition = 'none';
+            if (placesForCards === 3) renderPrevCard(1)
+            if (placesForCards === 6) renderPrevCard(2)
+            if (placesForCards === 9) renderPrevCard(3)
+            arrowLeft.onclick = tmpFun
+        }, 700)
+        this.$parentContainer.style.transition = 'all 0.7s ease-in-out';
 
     }
 }
 
 const slider = new Slider('.slider__items')
+
+const next = function () {
+    slider.nextCard()
+}
+const prev = function () {
+    slider.prevCard()
+}
+arrowRight.onclick = next;
+arrowLeft.onclick = prev;
 
 fetch('cards.json')
     .then(
@@ -193,8 +230,3 @@ fetch('cards.json')
         console.log('Fetch Error :-S', err);
     });
 
-const arrowRight = document.querySelector('.arrow-right')
-
-arrowRight.onclick = function () {
-    slider.nextCard()
-}
