@@ -8,24 +8,24 @@
       rel="stylesheet"
       href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/style.css" />
     <title>Shelter</title>
   </head>
   <body>
     <header class="header">
       <div class="container">
         <div class="top-bar">
-          <div class="top-bar__logo-box">
-            <a class="top-bar__logo" href="#">Cozy House</a>
+          <a href="#" class="top-bar__logo-box">
+            <div class="top-bar__logo">Cozy House</div>
             <p class="top-bar__descr">Shelter for pets in Boston</p>
-          </div>
+          </a>
           <nav class="navigation">
             <ul class="navigation__list">
               <li class="navigation__li">
                 <a href="" class="navigation__link"> About the shelter </a>
               </li>
               <li class="navigation__li">
-                <a href="" class="navigation__link"> Our pets </a>
+                <a href="/pets" class="navigation__link"> Our pets </a>
               </li>
               <li class="navigation__li">
                 <a href="" class="navigation__link"> Help the shelter </a>
@@ -59,7 +59,7 @@
         <div class="container">
           <div class="about-section">
             <img
-              src="images/dog-cat.png"
+              src="/images/dog-cat.png"
               alt="Dog and cat"
               class="about-section__pictures"
             />
@@ -100,31 +100,37 @@
                   class="btn-circle btn-circle__transparent arrow-right"
                 ></button>
               </div>
-              <div class="slider__items">
-                <div class="slider__item card">
-                  <img src="images/freddie.png" alt="pet" class="card__pic" />
-                  <div class="card__title">Freddie</div>
-                  <button class="btn btn__transparent">Learn more</button>
-                </div>
-                <div class="slider__item card">
-                  <img src="images/kate.png" alt="pet" class="card__pic" />
-                  <div class="card__title">Katrine</div>
-                  <button class="btn btn__transparent">Learn more</button>
-                </div>
-                <div class="slider__item card">
-                  <img src="images/jen.png" alt="pet" class="card__pic" />
-                  <div class="card__title">Jennifer</div>
-                  <button class="btn btn__transparent">Learn more</button>
-                </div>
-                <div class="slider__item card">
-                  <img src="images/woo.png" alt="pet" class="card__pic" />
-                  <div class="card__title">Woody</div>
-                  <button class="btn btn__transparent">Learn more</button>
-                </div>
-                <div class="slider__item card">
-                  <img src="images/sophia.png" alt="pet" class="card__pic" />
-                  <div class="card__title">Sophia</div>
-                  <button class="btn btn__transparent">Learn more</button>
+              <div class="overflow_slider">
+                <div class="slider__items">
+                  <div class="slider__item card">
+                    <img
+                      src="/images/freddie.png"
+                      alt="pet"
+                      class="card__pic"
+                    />
+                    <div class="card__title">Freddie</div>
+                    <button class="btn btn__transparent">Learn more</button>
+                  </div>
+                  <div class="slider__item card">
+                    <img src="/images/kate.png" alt="pet" class="card__pic" />
+                    <div class="card__title">Katrine</div>
+                    <button class="btn btn__transparent">Learn more</button>
+                  </div>
+                  <div class="slider__item card">
+                    <img src="/images/jen.png" alt="pet" class="card__pic" />
+                    <div class="card__title">Jennifer</div>
+                    <button class="btn btn__transparent">Learn more</button>
+                  </div>
+                  <div class="slider__item card">
+                    <img src="/images/woo.png" alt="pet" class="card__pic" />
+                    <div class="card__title">Woody</div>
+                    <button class="btn btn__transparent">Learn more</button>
+                  </div>
+                  <div class="slider__item card">
+                    <img src="/images/sophia.png" alt="pet" class="card__pic" />
+                    <div class="card__title">Sophia</div>
+                    <button class="btn btn__transparent">Learn more</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -203,7 +209,7 @@
               <span class="footer-content__icon i_mail"></span>
               <span class="footer-content__text">email@shelter.com</span>
             </a>
-            <a href="tel:+13 674 567 75 54" class="footer-content__item-link">
+            <a href="tel:+136745677554" class="footer-content__item-link">
               <span class="footer-content__icon i_tel"></span>
               <span class="footer-content__text">+13 674 567 75 54</span>
             </a>
@@ -225,6 +231,6 @@
         </div>
       </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
   </body>
 </html>

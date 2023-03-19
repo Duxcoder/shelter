@@ -9,14 +9,14 @@ h4 {
   padding: 0;
 }
 h1 {
-    display: inline-flex;
-    font-family: "Georgia";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 44px;
-    line-height: 130%;
-    color: #ffffff;
-  }
+  display: inline-flex;
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 130%;
+  color: #ffffff;
+}
 
 h3 {
   font-family: "Georgia";
@@ -138,6 +138,8 @@ li {
   &.btn-circle__inactive {
     background: transparent;
     border: 2px solid #cdcdcd;
+    color: #cdcdcd;
+    cursor: default;
     &:hover {
       background: transparent;
       border: 2px solid #cdcdcd;
@@ -168,6 +170,11 @@ li {
   border-radius: 9px;
   box-sizing: border-box;
   padding-bottom: 30px;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background: #ffffff;
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+  }
   .card__pic {
     width: 270px;
     height: 270px;
