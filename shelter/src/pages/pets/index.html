@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
-    />
-    <link rel="stylesheet" href="/style.css" />
-    <title>Our pets</title>
-  </head>
-  <body>
-    <header class="header pets">
+@@include('../../parts/head.html', {
+    "classPage": "pets",
+    "petsActive" : "navigation__link_active disabled"
+  })
+    <!-- <header class="header pets">
       <div class="container">
         <div class="top-bar">
           <a href="/" class="top-bar__logo-box">
@@ -22,7 +12,7 @@
           <nav class="navigation">
             <ul class="navigation__list">
               <li class="navigation__li">
-                <a href="" class="navigation__link"> About the shelter </a>
+                <a href="/" class="navigation__link"> About the shelter </a>
               </li>
               <li class="navigation__li">
                 <a href="/pets" class="navigation__link"> Our pets </a>
@@ -37,7 +27,7 @@
           </nav>
         </div>
       </div>
-    </header>
+    </header> -->
     <main class="main pets">
       <section class="our-friends-section">
         <div class="container">
@@ -140,39 +130,4 @@
         </div>
       </section>
     </main>
-    <footer class="footer bg-pattern">
-        <div class="container pos-rel-inx-2">
-          <div class="footer-content">
-            <div class="footer-content__questions footer-content__item">
-              <h3 class="footer-content__title">For questions and suggestions</h3>
-              <a
-                href="mailto:email@shelter.com"
-                class="footer-content__item-link"
-              >
-                <span class="footer-content__icon i_mail"></span>
-                <span class="footer-content__text">email@shelter.com</span>
-              </a>
-              <a href="tel:+136745677554" class="footer-content__item-link">
-                <span class="footer-content__icon i_tel"></span>
-                <span class="footer-content__text">+13 674 567 75 54</span>
-              </a>
-            </div>
-            <div class="footer-content__address footer-content__item">
-              <h3 class="footer-content__title">We are waiting for your visit</h3>
-              <a href="#" class="footer-content__item-link">
-                <span class="footer-content__icon i_map"></span>
-                <span class="footer-content__text"
-                  >1 Central Street, Boston (entrance from the store)</span
-                >
-              </a>
-              <a href="#" class="footer-content__item-link">
-                <span class="footer-content__icon i_map"></span>
-                <span class="footer-content__text">18 South Park, London </span>
-              </a>
-            </div>
-            <div class="footer-content__dog"></div>
-          </div>
-        </div>
-      </footer>
-  </body>
-</html>
+    @@include('../../parts/footer.html')

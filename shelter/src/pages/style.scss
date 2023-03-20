@@ -1,3 +1,4 @@
+
 /// Header
 .header {
   position: absolute;
@@ -59,6 +60,10 @@
           color: #fafafa;
           border-bottom: 3px solid #f1cdb3;
         }
+      }
+      .navigation__link_active {
+        color: #fafafa;
+        border-bottom: 3px solid #f1cdb3;
       }
     }
   }

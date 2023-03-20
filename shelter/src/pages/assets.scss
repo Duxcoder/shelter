@@ -1,3 +1,38 @@
+@font-face {
+  font-family: "Georgia";
+  src: url("/fonts/georgia-regular.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Georgia";
+  src: url("/fonts/georgia-italic.ttf") format("ttf");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Arial";
+  src: url("/fonts/georgia-italic.ttf") format("ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Arial";
+  src: url("/fonts/arial-italic.ttf") format("ttf");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 p,
 ul,
 li,
@@ -26,6 +61,11 @@ h3 {
   line-height: 130%;
   letter-spacing: 0.06em;
   color: #545454;
+}
+.disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 1;
 }
 .text {
   font-family: "Arial";
@@ -174,6 +214,11 @@ li {
   &:hover {
     background: #ffffff;
     box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+    cursor: pointer;
+    .btn__transparent {
+      background: #fddcc4;
+      border: 2px solid #fddcc4;
+    }
   }
   .card__pic {
     width: 270px;

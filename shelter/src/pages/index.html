@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
-    />
-    <link rel="stylesheet" href="/style.css" />
-    <title>Shelter</title>
-  </head>
-  <body>
-    <header class="header">
+@@include('../parts/head.html', {
+  "classPage": "",
+  "aboutActive" : "navigation__link_active disabled"
+})
+    <!-- <header class="header">
       <div class="container">
         <div class="top-bar">
           <a href="#" class="top-bar__logo-box">
@@ -22,22 +12,24 @@
           <nav class="navigation">
             <ul class="navigation__list">
               <li class="navigation__li">
-                <a href="" class="navigation__link"> About the shelter </a>
+                <a href="/" class="navigation__link navigation__link_active">
+                  About the shelter
+                </a>
               </li>
               <li class="navigation__li">
-                <a href="/pets" class="navigation__link"> Our pets </a>
+                <a href="/pets/index.html" class="navigation__link"> Our pets </a>
               </li>
               <li class="navigation__li">
-                <a href="" class="navigation__link"> Help the shelter </a>
+                <a href="#help" class="navigation__link"> Help the shelter </a>
               </li>
               <li class="navigation__li">
-                <a href="" class="navigation__link"> Contacts </a>
+                <a href="#contacts" class="navigation__link"> Contacts </a>
               </li>
             </ul>
           </nav>
         </div>
       </div>
-    </header>
+    </header> -->
     <main class="main">
       <section class="not-only-section bg-pattern">
         <div class="container pos-rel-inx-2">
@@ -49,7 +41,7 @@
                 extremely wide and open heart. He or she will love you more than
                 anybody else in the world, you will see!
               </p>
-              <a href="/" class="btn btn__fill">Make a friend</a>
+              <a href="#our-friends" class="btn btn__fill">Make a friend</a>
             </div>
             <div class="start-screen-dog"></div>
           </div>
@@ -85,7 +77,7 @@
           </div>
         </div>
       </section>
-      <section class="our-friends-section">
+      <section id="our-friends" class="our-friends-section">
         <div class="container">
           <div class="our-friends">
             <h3 class="our-friends__title">
@@ -134,11 +126,11 @@
                 </div>
               </div>
             </div>
-            <button class="btn btn__fill">Get to know the rest</button>
+            <a href="/pets/index.html" class="btn btn__fill">Get to know the rest</a>
           </div>
         </div>
       </section>
-      <section class="you-can-help-section">
+      <section id="help" class="you-can-help-section">
         <div class="container">
           <div class="you-can-help">
             <h3 class="you-can-help__title">How you can help our shelter</h3>
@@ -183,7 +175,7 @@
               <span class="donation__bank-name"
                 >Name of the bank / Type of bank account</span
               >
-              <a href="#" class="donation__bank-card">
+              <a href="#no_scroll" class="donation__bank-card">
                 8380 2880 8028 8791 7435
               </a>
               <div class="donation__legal-info">
@@ -197,40 +189,4 @@
         </div>
       </section>
     </main>
-    <footer class="footer bg-pattern">
-      <div class="container pos-rel-inx-2">
-        <div class="footer-content">
-          <div class="footer-content__questions footer-content__item">
-            <h3 class="footer-content__title">For questions and suggestions</h3>
-            <a
-              href="mailto:email@shelter.com"
-              class="footer-content__item-link"
-            >
-              <span class="footer-content__icon i_mail"></span>
-              <span class="footer-content__text">email@shelter.com</span>
-            </a>
-            <a href="tel:+136745677554" class="footer-content__item-link">
-              <span class="footer-content__icon i_tel"></span>
-              <span class="footer-content__text">+13 674 567 75 54</span>
-            </a>
-          </div>
-          <div class="footer-content__address footer-content__item">
-            <h3 class="footer-content__title">We are waiting for your visit</h3>
-            <a href="#" class="footer-content__item-link">
-              <span class="footer-content__icon i_map"></span>
-              <span class="footer-content__text"
-                >1 Central Street, Boston (entrance from the store)</span
-              >
-            </a>
-            <a href="#" class="footer-content__item-link">
-              <span class="footer-content__icon i_map"></span>
-              <span class="footer-content__text">18 South Park, London </span>
-            </a>
-          </div>
-          <div class="footer-content__dog"></div>
-        </div>
-      </div>
-    </footer>
-    <script src="/script.js"></script>
-  </body>
-</html>
+    @@include('../parts/footer.html')

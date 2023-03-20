@@ -1,47 +1,56 @@
-const {src, dest, series, watch} = require('gulp')
+const { src, dest, series, watch } = require('gulp')
 const sass = require('gulp-sass')(require('sass'));
 const concat = require('gulp-concat')
 const autoprefix = require('gulp-autoprefixer')
 const csso = require('gulp-csso')
 const include = require('gulp-file-include')
 // import {deleteAsync} from 'del';
-
 const htmlmin = require('gulp-htmlmin')
 const sync = require('browser-sync').create()
 const imagemin = require('gulp-imagemin');
-const json = require('gulp-json-transform');
 
 
-function js (){
+function js() {
     return src('src/pages/*.js')
-    .pipe(dest('dist'));
+        .pipe(dest('dist'));
 }
 
-function jsons () {
-  return src('src/assets/*.json')
-    .pipe(dest('dist'));
+function jsons() {
+    return src('src/assets/*.json')
+        .pipe(dest('dist'));
 }
 
-function img () {
+function fonts() {
+    return src(['src/assets/fonts/arial/*.ttf', 'src/assets/fonts/georgia/*.ttf'])
+        .pipe(dest('dist/fonts'))
+}
+
+
+function img() {
     return src(['src/assets/images/*.{jpg,png,gif,svg}', 'src/assets/icons/*.{jpg,png,gif,svg}'])
-      .pipe(imagemin())
-      .pipe(dest('dist/images'));
+        .pipe(imagemin())
+        .pipe(dest('dist/images'));
 }
 
 function html() {
     return src('src/pages/*.html')
-    .pipe(dest('dist'))
-    .pipe(src('src/pages/pets/*.html'))
-    .pipe(dest('dist/pets'))
+        .pipe(include())
+        .pipe(dest('dist'))
+        .pipe(src('src/pages/pets/*.html'))
+        .pipe(include({
+            prefix: '@@',
+            basepath: '@file'
+        }))
+        .pipe(dest('dist/pets'))
 }
 
 function scss() {
     return src(['src/pages/*.scss', 'src/pages/pets/*.scss'])
-    .pipe(sass())
-    .pipe(autoprefix())
-    .pipe(csso())
-    .pipe(concat('style.css'))
-    .pipe(dest('dist'))
+        .pipe(sass())
+        .pipe(autoprefix())
+        .pipe(csso())
+        .pipe(concat('style.css'))
+        .pipe(dest('dist'))
 }
 
 function serve() {
@@ -59,5 +68,5 @@ function serve() {
 
 
 
-exports.build = series(scss, html, img, js, jsons)
-exports.serve = series(scss, html, img, js, serve)
+exports.build = series(scss, html, img, js, jsons, fonts)
+exports.serve = series(scss, html, img, js, jsons, fonts, serve)

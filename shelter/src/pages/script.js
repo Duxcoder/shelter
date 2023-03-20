@@ -9,37 +9,7 @@ class Cards {
     getCard(i) {
         return this.cards[i]
     }
-
-    getRandomCards(n) {
-
-    }
-
     createRandomCards(n, exclusionCards = []) {
-        // if (this.cards.length === 0) {
-        //     console.log('Cards not found')
-        //     return null
-        // } else {
-        //     let cards = [];
-        //     let lengthCards = cards.length
-        //     let i = 0
-        //     let log = []
-        //     while (cards.length < n) {
-        //         i++
-        //         if (i > 1000) return console.log('error loop', cards)
-        //         const num = Math.floor(Math.random() * ((this.cards.length - 1) + 1));
-        //         if (n > this.cards.length && cards.length >= this.cards.length - 1) {
-        //             cards.push(cards.at(-lengthCards))
-        //             lengthCards = cards.length - 1;
-        //         }
-        //         if (!cards.includes(this.cards[num]) && !last.includes(this.cards[num])) {
-        //             cards.push(this.cards[num]);
-        //         }
-        //         log.push(i + ' ' + num + cards.length)
-        //     }
-        //     console.log(log)
-        //     return cards
-        // }
-
         let cards = [];
         const rNum = () => Math.floor(Math.random() * this.cards.length);
         let random = rNum();
@@ -59,7 +29,6 @@ class Cards {
         }
         return cards
     }
-
     getCards() {
         return this.cards
     }
@@ -104,9 +73,6 @@ class Slider {
         cards.forEach((card) => {
             this.renderCard(card)
         })
-    }
-    sliderUpdate(placesCards){
-
     }
     createHtmlCard(card) {
         const { picture, name, link, alt } = card
