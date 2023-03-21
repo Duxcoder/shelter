@@ -1,3 +1,6 @@
+body {
+   min-width: 1280px;
+}
 @font-face {
   font-family: "Georgia";
   src: local("Georgia"), url("./fonts/georgia-regular.ttf") format("truetype");
@@ -104,6 +107,7 @@ li {
   margin: 0 auto;
   height: 100%;
   max-width: 1280px;
+  min-width: 1280px;
   padding: 0 40px;
   box-sizing: border-box;
 }
@@ -161,6 +165,7 @@ li {
   letter-spacing: 0.06em;
   color: #292929;
   border-radius: 50%;
+  border: none;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   &.btn-circle__transparent {
