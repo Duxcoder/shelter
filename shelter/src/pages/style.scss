@@ -107,7 +107,7 @@
       }
     }
     .start-screen-dog {
-      background-image: url("images/mainDog.png");
+      background-image: url("./images/mainDog.png");
       width: calc(100% - 460px - 24px);
       margin-left: 24px;
       min-width: 350px;
@@ -181,13 +181,13 @@
           width: 100%;
           height: 100%;
           .arrow-left {
-            background-image: url("/images/arrow-left.svg");
+            background-image: url("./images/arrow-left.svg");
             background-repeat: no-repeat;
             background-position: center;
             z-index: 2;
           }
           .arrow-right {
-            background-image: url("/images/arrow-right.svg");
+            background-image: url("./images/arrow-right.svg");
             background-repeat: no-repeat;
             background-position: center;
             z-index: 2;
@@ -252,31 +252,31 @@
     color: #545454;
   }
   .item_food {
-    background-image: url("/images/icon-pet-food.svg");
+    background-image: url("./images/icon-pet-food.svg");
   }
   .item_transport {
-    background-image: url("/images/icon-transportation.svg");
+    background-image: url("./images/icon-transportation.svg");
   }
   .item_toys {
-    background-image: url("/images/icon-toys.svg");
+    background-image: url("./images/icon-toys.svg");
   }
   .item_bowls {
-    background-image: url("/images/icon-bowls-and-cups.svg");
+    background-image: url("./images/icon-bowls-and-cups.svg");
   }
   .item_shampoo {
-    background-image: url("/images/icon-shampoos.svg");
+    background-image: url("./images/icon-shampoos.svg");
   }
   .item_vitamins {
-    background-image: url("/images/icon-vitamins.svg");
+    background-image: url("./images/icon-vitamins.svg");
   }
   .item_medic {
-    background-image: url("/images/icon-medicines.svg");
+    background-image: url("./images/icon-medicines.svg");
   }
   .item_collars {
-    background-image: url("/images/icon-collars.svg");
+    background-image: url("./images/icon-collars.svg");
   }
   .item_sleep {
-    background-image: url("/images/icon-sleeping-area.svg");
+    background-image: url("./images/icon-sleeping-area.svg");
   }
 
   /// Donation
@@ -293,7 +293,7 @@
       gap: 30px;
       padding: 80px 0 99px 0;
       .donation__dog {
-        background-image: url("/images/don-dog.png");
+        background-image: url("./images/don-dog.png");
         width: 100%;
         max-width: 505px;
         height: 261px;
@@ -334,7 +334,7 @@
           align-items: center;
           letter-spacing: 0.06em;
           color: #545454;
-          background-image: url("/images/credit-card.svg");
+          background-image: url("./images/credit-card.svg");
           background-repeat: no-repeat;
           background-position-y: center;
           background-position-x: 15px;
@@ -427,13 +427,13 @@
           transition: all 0.3s ease-in-out;
         }
         .i_mail {
-          mask-image: url("/images/icon-email.svg");
+          mask-image: url("./images/icon-email.svg");
         }
         .i_tel {
-          mask-image: url("/images/icon-phone.svg");
+          mask-image: url("./images/icon-phone.svg");
         }
         .i_map {
-          mask-image: url("/images/icon-marker.svg");
+          mask-image: url("./images/icon-marker.svg");
           min-width: 22px;
         }
         .footer-content__text {
@@ -451,7 +451,7 @@
     .footer-content__dog {
       width: 300px;
       height: 310px;
-      background-image: url("/images/footer-dog.png");
+      background-image: url("./images/footer-dog.png");
       background-repeat: no-repeat;
       background-position: bottom;
     }

@@ -21,7 +21,7 @@ function jsons() {
 }
 
 function fonts() {
-    return src(['src/assets/fonts/arial/*.ttf', 'src/assets/fonts/georgia/*.ttf'])
+    return src(['src/assets/fonts/arial/*.{ttf,woff,woff2}', 'src/assets/fonts/georgia/*.{ttf,woff,woff2}'])
         .pipe(dest('dist/fonts'))
 }
 
