@@ -144,7 +144,7 @@
         gap: 25px;
         padding: 14px 0;
         .about-section__title {
-          width: 370px;
+          max-width: 310px;
         }
       }
     }
@@ -515,6 +515,19 @@
       }
     }
   }
+  .main {
+    .about {
+      .about-section {
+        gap: 80px;
+        .about-section__pictures {
+          width: auto;
+        }
+        .about-section__content {
+          padding: 0px;
+        }
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 720px) {
@@ -572,6 +585,30 @@
       }
       .start-screen-dog {
         height: 272px;
+      }
+    }
+  }
+
+  .main {
+    .about {
+      .about-section {
+        gap: 40px;
+        padding: 43px 15px 43px 15px;
+        .about-section__pictures {
+          width: 260px;
+        }
+        .about-section__content {
+          gap: 23px;
+          .text {
+            text-align: justify;
+          }
+          .about-section__title {
+            font-size: 25px;
+            line-height: 130%;
+            text-align: center;
+            letter-spacing: 0.06em;
+          }
+        }
       }
     }
   }
