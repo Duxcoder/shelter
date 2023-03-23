@@ -67,6 +67,8 @@ class Slider {
         this.translateX = 0;
     }
     startSlider(cards) {
+        this.cardsOnPage = [];
+        this.$cardsOnPage = [];
         this.$parentContainer.innerHTML = '';
         this.$parentContainer.style.transform = `translateX(${this.translateX}px)`
 
@@ -135,7 +137,8 @@ class Slider {
         }
         const renderPrevCard = (nFirstCards) => {
             const firstCardsOnPage = this.cardsOnPage.slice(0, 3);
-            console.log('FirstCardsOnPage:' + ' ', firstCardsOnPage)
+            console.log('FirstCardsOnPage:' + ' ', firstCardsOnPage);
+            console.log('cardsOnPage:' + ' ', this.cardsOnPage);
             const newCards = cards.createRandomCards(nFirstCards, firstCardsOnPage);
             newCards.forEach(card => this.renderCard(card, false))
             for (let i = 0; i < nFirstCards; i++) {
