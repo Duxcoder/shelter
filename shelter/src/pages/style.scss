@@ -231,15 +231,23 @@
         padding-top: 60px;
         .you-can-help__item {
           display: flex;
-          align-items: flex-end;
+          flex-direction: column;
+          align-items: center;
           justify-content: center;
           min-width: 60px;
+          gap: 30px;
           height: 113px;
-          background-position: top;
-          background-repeat: no-repeat;
         }
       }
     }
+  }
+  .item-icon {
+    display: flex;
+    width: 60px;
+    height: 60px;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
   }
   .item_title {
     font-family: "Georgia";
@@ -527,6 +535,28 @@
         }
       }
     }
+
+    .you-can-help-section {
+      .you-can-help {
+        .you-can-help__title {
+        }
+        .you-can-help__items {
+          row-gap: 55px;
+          column-gap: 60px;
+          .you-can-help__item {
+            min-width: 170px;
+            height: 113px;
+          }
+        }
+      }
+    }
+
+    .donation-section {
+      .donation {
+        gap: 60px;
+        padding: 79px 0 99px 0;
+      }
+    }
   }
 }
 
@@ -602,6 +632,94 @@
             margin-top: 41px;
             .slider__item {
             }
+          }
+        }
+      }
+    }
+    .you-can-help-section {
+      padding: 42px 0;
+      .you-can-help {
+        .you-can-help__title {
+          width: auto;
+          max-width: 250px;
+          font-size: 25px;
+          line-height: 130%;
+          letter-spacing: 0.06em;
+        }
+        .you-can-help__items {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 30px;
+          padding-top: 42px;
+          .you-can-help__item {
+            min-width: 130px;
+            height: 87px;
+            gap: 20px;
+            .item-icon {
+              width: 50px;
+              height: 50px;
+            }
+          }
+        }
+      }
+    }
+    .item_title {
+      font-size: 15px;
+      line-height: 110%;
+    }
+
+    .donation-section {
+      background: #f6f6f6;
+      min-height: 462px;
+      .donation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap-reverse;
+        height: 100%;
+        gap: 42px;
+        padding: 41px 0;
+        .donation__dog {
+          background-image: url("./images/don-dog.png");
+          width: 100%;
+          max-width: 260px;
+          height: 135px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+        }
+        .donation__content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          max-width: 380px;
+          gap: 20px;
+          .donation__title {
+            width: 220px;
+            text-align: center;
+            font-size: 25px;
+          }
+          .donation__bank-name {
+            line-height: 160%;
+            letter-spacing: normal;
+          }
+          .donation__bank-card {
+            width: 281px;
+            padding: 13px 15px 13px 59px;
+            font-size: 15px;
+            line-height: 110%;
+
+            &:hover {
+              background-color: #fddcc4;
+            }
+            &:active {
+              background-color: #f1cdb3;
+            }
+          }
+          .donation__legal-info {
+            text-align: justify;
+    padding: 0 10px;
           }
         }
       }
