@@ -31,17 +31,17 @@
 }
 
 .menu-wrapper:before {
-  @include line(top);
-  @include keyframes(line-top-rotate-callapse, top, 0, calc(50% - 1px));
+  @include line(top, calc(50% - 1px));
+  @include keyframes(line-top-rotate-collapse, top, 0, calc(50% - 1px));
   @include keyframes(line-top-open, top, calc(50% - 1px), 0);
-  animation: 0.2s ease 1 line-top-rotate-callapse, line-top-open 0.4s ease 0.2s;
+  animation: 0.2s cubic-bezier(0.32, 1, 0.23, 1) 1 line-top-rotate-collapse, 0.2s cubic-bezier(0.32, 1, 0.23, 1) 0.4s line-top-open forwards;
 }
 .menu-wrapper:after {
-  @include line(bottom);
-  @include keyframes(line-bottom-rotate-callapse, bottom, 0, calc(50% - 1px));
+  @include line(bottom, calc(50% - 1px));
+  @include keyframes(line-bottom-rotate-collapse, bottom, 0, calc(50% - 1px));
   @include keyframes(line-bottom-open, bottom, calc(50% - 1px), 0);
-  animation: 0.2s ease 1 line-bottom-rotate-callapse,
-    line-bottom-open 0.4s ease 0.2s;
+  animation: 0.2s cubic-bezier(0.32, 1, 0.23, 1) 1 line-bottom-rotate-collapse,
+     0.2s cubic-bezier(0.32, 1, 0.23, 1) 0.4s line-bottom-open forwards;
 }
 
 .animate.menu-wrapper {
@@ -52,15 +52,15 @@
 
 .animate.menu-wrapper:before {
   @include line(top, calc(50% - 1px));
-  @include keyframes(line-top-callapse, top, 0, calc(50% - 1px));
+  @include keyframes(line-top-collapse, top, 0, calc(50% - 1px));
   @include keyframes(line-top-rotate-open, top, calc(50% - 1px), 0);
-  animation: line-top-callapse 0.2s ease 1, 0.2s ease 0.4s line-top-rotate-open forwards;
+  animation: line-top-collapse 0.2s cubic-bezier(0.23, 1, 0.32, 1) 1, 0.2s cubic-bezier(0.23, 1, 0.32, 1) 0.4s line-top-rotate-open forwards;
 }
 
 .animate.menu-wrapper:after {
   @include line(bottom, calc(50% - 1px));
-  @include keyframes(line-bottom-callapse, bottom, 0, calc(50% - 1px));
+  @include keyframes(line-bottom-collapse, bottom, 0, calc(50% - 1px));
   @include keyframes(line-bottom-rotate-open, bottom, calc(50% - 1px), 0);
-  animation: line-bottom-callapse 0.2s ease 1,
-    0.2s ease 0.4s line-bottom-rotate-open forwards;
+  animation: line-bottom-collapse 0.2s cubic-bezier(0.23, 1, 0.32, 1) 1,
+    0.2s cubic-bezier(0.23, 1, 0.32, 1) 0.4s line-bottom-rotate-open forwards;
 }

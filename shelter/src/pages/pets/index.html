@@ -1,4 +1,5 @@
 @@include('../../parts/head.html', {
+  "favicon": "../images/fav.svg",
     "classPage": "pets",
     "petsActive" : "navigation__link_active disabled",
     "logo-link": "../index.html",
@@ -7,32 +8,6 @@
     "srcPets": './index.html',
     "srcHelp": '../#help'
   })
-    <!-- <header class="header pets">
-      <div class="container">
-        <div class="top-bar">
-          <a href="/" class="top-bar__logo-box">
-            <div class="top-bar__logo">Cozy House</div>
-            <p class="top-bar__descr">Shelter for pets in Boston</p>
-          </a>
-          <nav class="navigation">
-            <ul class="navigation__list">
-              <li class="navigation__li">
-                <a href="/" class="navigation__link"> About the shelter </a>
-              </li>
-              <li class="navigation__li">
-                <a href="/pets" class="navigation__link"> Our pets </a>
-              </li>
-              <li class="navigation__li">
-                <a href="" class="navigation__link"> Help the shelter </a>
-              </li>
-              <li class="navigation__li">
-                <a href="" class="navigation__link"> Contacts </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </header> -->
     <main class="main pets">
       <section class="our-friends-section">
         <div class="container">
@@ -123,11 +98,11 @@
               </div>
             </div>
             <div class="our-friends__pagination">
-              <button class="btn-circle btn-circle__inactive">&lt;&lt;</button>
-              <button class="btn-circle btn-circle__inactive">&lt;</button>
-              <button class="btn-circle btn-circle__active">1</button>
-              <button class="btn-circle btn-circle__transparent">&gt;</button>
-              <button class="btn-circle btn-circle__transparent">
+              <button data-btn="first" class="btn-circle btn-circle__transparent btn-circle__inactive">&lt;&lt;</button>
+              <button data-btn="prev" class="btn-circle btn-circle__transparent btn-circle__inactive">&lt;</button>
+              <button data-btn="current" class="btn-circle btn-circle__active">1</button>
+              <button data-btn="next" class="btn-circle btn-circle__transparent">&gt;</button>
+              <button data-btn="last" class="btn-circle btn-circle__transparent">
                 &gt;&gt;
               </button>
             </div>
@@ -135,4 +110,6 @@
         </div>
       </section>
     </main>
-    @@include('../../parts/footer.html')
+    @@include('../../parts/footer.html', {
+    "scriptSrc": "../script.js",
+    })

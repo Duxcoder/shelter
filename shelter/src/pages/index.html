@@ -1,4 +1,5 @@
 @@include('../parts/head.html', {
+  "favicon": "./images/fav.svg",
   "classPage": "",
   "aboutActive" : "navigation__link_active disabled",
   "logo-link": "#no_scroll",
@@ -189,4 +190,6 @@
         </div>
       </section>
     </main>
-    @@include('../parts/footer.html')
+    @@include('../parts/footer.html', {
+      'scriptSrc': './script.js'
+    })
