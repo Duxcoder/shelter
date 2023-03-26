@@ -36,6 +36,9 @@
       }
     }
   }
+  .menu-wrapper {
+    display: none;
+  }
   .navigation {
   }
   .navigation__list {
@@ -588,6 +591,9 @@
   .header {
     .navigation {
       display: none;
+    }
+    .menu-wrapper {
+      display: block;
     }
   }
 

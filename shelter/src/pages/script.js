@@ -199,3 +199,10 @@ fetch('cards.json')
         console.log('Fetch Error :-S', err);
     });
 
+
+    /// Hamburger
+    const btn = document.querySelector(".menu-wrapper");
+    const handler = function () {
+      this.classList.toggle('animate');
+    }
+    btn.onclick = handler
