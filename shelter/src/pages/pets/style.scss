@@ -59,3 +59,41 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .main {
+  &.pets{
+    .our-friends-section {
+      padding-bottom: 77px;
+      .our-friends {
+        .our-friends__cards {
+          padding-top: 29px;
+          padding-bottom: 39px;
+        }
+      }
+
+    }
+  }
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  .main {
+  &.pets{
+    .our-friends-section {
+      padding-bottom: 42px;
+      .our-friends {
+        .our-friends__cards {
+          padding-top: 42px;
+          padding-bottom: 41px;
+        }
+        .our-friends__pagination {
+          gap: 10px;
+        }
+      }
+
+    }
+  }
+  }
+}
+

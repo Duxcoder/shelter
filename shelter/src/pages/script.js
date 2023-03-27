@@ -205,11 +205,13 @@ const sliderModule = () => {
 
 
 /// Hamburger
-const btn = document.querySelector(".menu-wrapper");
-const handler = function () {
-    this.classList.toggle('animate');
+const hamburgerModule = () => {
+    const btn = document.querySelector(".menu-wrapper");
+    const handler = function () {
+        this.classList.toggle('animate');
+    }
+    btn.onclick = handler
 }
-btn.onclick = handler
 
 
 
@@ -394,5 +396,6 @@ const paginationModule = () => {
     btnNext.onclick = clickNext;
     btnLast.onclick = clickLast;
 }
-
-paginationModule();
+hamburgerModule();
+document.querySelector('.slider__items') && sliderModule();
+document.querySelector('.our-friends__cards') && paginationModule();
