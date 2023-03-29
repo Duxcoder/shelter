@@ -83,10 +83,11 @@ const sliderModule = () => {
             const { picture, name, link, alt } = card
             const $card = document.createElement('div');
             $card.classList.add('slider__item', 'card');
+            $card.dataset.showcard = `${link}`;
             $card.innerHTML = `
         <img src="${picture}" alt="${alt}" class="card__pic" />
         <div class="card__title">${name}</div>
-        <button data-showCard="${link}" class="btn btn__transparent">Learn more</button>
+        <button class="btn btn__transparent">Learn more</button>
         `
             return $card
         }
@@ -265,10 +266,11 @@ const paginationModule = () => {
             const { picture, name, link, alt } = card
             const $card = document.createElement('div');
             $card.classList.add('slider__item', 'card');
+            $card.dataset.showcard = `${link}`;
             $card.innerHTML = `
             <img src="../${picture}" alt="${alt}" class="card__pic" />
             <div class="card__title">${name}</div>
-            <button data-showCard="${link}" class="btn btn__transparent">Learn more</button>
+            <button class="btn btn__transparent">Learn more</button>
             `
             return $card
         }
@@ -289,10 +291,6 @@ const paginationModule = () => {
         });
         pagination.createCardsArray();
         pagination.start(placesForCards)
-
-        // document.addEventListener('click', () => {
-        //     console.log(pagination.getCards())
-        // })
     })
     let placesForCards = 8;
 
@@ -399,3 +397,57 @@ const paginationModule = () => {
 hamburgerModule();
 document.querySelector('.slider__items') && sliderModule();
 document.querySelector('.our-friends__cards') && paginationModule();
+
+
+/// PopUp
+const popupModule = () => {
+    const btns = document.querySelectorAll('[data-showcard]');
+    const btnClose = document.querySelector('.pop-up-close')
+    console.log(btns)
+    const popup = document.querySelector('.pop-up-container');
+    const popupBox = document.querySelector('.pop-up')
+    const closeESC = (e) => {
+        if (e.key === 'Escape') popup.classList.remove('open');
+        document.onkeydown = null
+    }
+    const handler = function (e) {
+        popup.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        document.onkeydown = closeESC;
+    }
+    const closePopUp = () => {
+        popup.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    const closePopUpOverflow = (e) => {
+        !e.target.closest('.pop-up') ? closePopUp() : null
+    }
+    btns.forEach(btn => {
+        btn.onclick = handler;
+    })
+
+    btnClose.onclick = closePopUp;
+    popup.onclick = closePopUpOverflow;
+}
+window.onload = popupModule;
+const $parent = document.querySelector('.our-friends-section');
+$parent.onclick = popupModule;
+
+// class Cards {
+//     /// хранение, удаление, получение, редактирование карт
+// }
+// function pagination() {
+//     const cards = new Cards()
+//     /// получаю данные через fetch и отправляю в cards
+//     /// различные функции для работы pagination
+// }
+// function slider() {
+//     const cards = new Cards()
+//     /// получаю данные через fetch и отправляю в cards
+//     /// различные функции для работы slider
+// }
+// function popup() {
+//     // И вот тут я задумался, а не много ли fetch запросов будет чтобы получить данные для popup.
+//     // По хорошему на странице main мне нужны для popup карты из slider
+//     // А на странице pets карты из pagination
+// }
