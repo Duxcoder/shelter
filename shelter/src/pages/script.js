@@ -4,8 +4,16 @@ class Cards {
     constructor() {
         this.cards = []
     }
-    add(options) {
-        this.cards.push(options)
+
+    async fetchData(url) {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    }
+
+    async add(url) {
+        const data = await this.fetchData(url);
+        this.cards.push(...data)
     }
     getCard(i) {
         return this.cards[i]
@@ -34,11 +42,10 @@ class Cards {
         return this.cards
     }
 }
+const cardsSlider = new Cards();
+const cardsPagination = new Cards();
 
 const sliderModule = () => {
-
-    const cards = new Cards()
-
     let placesForCards = 9;
 
     const checkWindowSize = (places) => {
@@ -55,7 +62,7 @@ const sliderModule = () => {
     window.addEventListener('resize', (e) => {
         let prevPlaces = placesForCards;
         placesForCards = checkWindowSize()
-        prevPlaces !== placesForCards && (slider.startSlider(cards.createRandomCards(placesForCards)))
+        prevPlaces !== placesForCards && (slider.startSlider(cardsSlider.createRandomCards(placesForCards)))
     });
 
     const arrowRight = document.querySelector('.arrow-right')
@@ -108,7 +115,7 @@ const sliderModule = () => {
             const renderNextCard = (nLastCards) => {
                 const lastCardsOnPage = this.cardsOnPage.slice(-nLastCards)
                 console.log(lastCardsOnPage)
-                const newCards = cards.createRandomCards(nLastCards, lastCardsOnPage);
+                const newCards = cardsSlider.createRandomCards(nLastCards, lastCardsOnPage);
                 newCards.forEach(card => this.renderCard(card))
                 for (let i = 0; i < nLastCards; i++) {
                     this.$cardsOnPage.shift();
@@ -143,7 +150,7 @@ const sliderModule = () => {
                 const firstCardsOnPage = this.cardsOnPage.slice(0, 3);
                 console.log('FirstCardsOnPage:' + ' ', firstCardsOnPage);
                 console.log('cardsOnPage:' + ' ', this.cardsOnPage);
-                const newCards = cards.createRandomCards(nFirstCards, firstCardsOnPage);
+                const newCards = cardsSlider.createRandomCards(nFirstCards, firstCardsOnPage);
                 newCards.forEach(card => this.renderCard(card, false))
                 for (let i = 0; i < nFirstCards; i++) {
                     this.$cardsOnPage.pop();
@@ -182,25 +189,29 @@ const sliderModule = () => {
     arrowRight.onclick = next;
     arrowLeft.onclick = prev;
 
-    fetch('cards.json')
-        .then(
-            function (response) {
-                if (response.status !== 200) {
-                    console.log('Looks like there was a problem. Status Code: ' +
-                        response.status);
-                    return;
-                }
-                response.json().then(function (data) {
-                    data.forEach(card => {
-                        cards.add(card);
-                    })
-                    slider.startSlider(cards.createRandomCards(placesForCards))
-                });
-            }
-        )
-        .catch(function (err) {
-            console.log('Fetch Error :-S', err);
-        });
+    // fetch('cards.json')
+    //     .then(
+    //         function (response) {
+    //             if (response.status !== 200) {
+    //                 console.log('Looks like there was a problem. Status Code: ' +
+    //                     response.status);
+    //                 return;
+    //             }
+    //             response.json().then(function (data) {
+    //                 data.forEach(card => {
+    //                     cards.add(card);
+    //                 })
+    //                 slider.startSlider(cards.createRandomCards(placesForCards))
+    //             });
+    //         }
+    //     )
+    //     .catch(function (err) {
+    //         console.log('Fetch Error :-S', err);
+    //     });
+    cardsSlider.add('cards.json')
+        .then(() => {
+            slider.startSlider(cardsSlider.createRandomCards(placesForCards))
+        })
 }
 
 
@@ -218,11 +229,11 @@ const hamburgerModule = () => {
 
 /// Pagination
 const paginationModule = () => {
-    async function getData() {
-        const response = await fetch('../cards.json');
-        const data = await response.json();
-        return data
-    }
+    // async function getData() {
+    //     const response = await fetch('../cards.json');
+    //     const data = await response.json();
+    //     return data
+    // }
 
 
 
@@ -241,7 +252,7 @@ const paginationModule = () => {
         }
         createCardsArray = () => {
             while (this.cards.length < 48) {
-                this.cards = this.cards.concat(cards.createRandomCards(8))
+                this.cards = this.cards.concat(cardsPagination.createRandomCards(8))
             }
         }
         createPagesCards = () => {
@@ -283,15 +294,20 @@ const paginationModule = () => {
         }
 
     }
-    const cards = new Cards();
+
     const pagination = new Pagination('.our-friends__cards');
-    getData().then(function (data) {
-        data.forEach(card => {
-            cards.add(card);
-        });
-        pagination.createCardsArray();
-        pagination.start(placesForCards)
-    })
+    cardsPagination.add('../cards.json')
+        .then(() => {
+            pagination.createCardsArray();
+            pagination.start(placesForCards)
+        })
+    // getData().then(function (data) {
+    //     data.forEach(card => {
+    //         cards.add(card);
+    //     });
+    //     pagination.createCardsArray();
+    //     pagination.start(placesForCards)
+    // })
     let placesForCards = 8;
 
     const checkWindowSize = (places) => {
