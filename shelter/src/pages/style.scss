@@ -374,7 +374,7 @@
 
 .footer {
   position: relative;
-  min-height: 350px;
+  // min-height: 350px;
   background: radial-gradient(
       110.67% 538.64% at 5.73% 50%,
       #513d2f 0%,
@@ -505,6 +505,13 @@
   }
 }
 
+
+@media screen and (max-width: 1110px) {
+.main .you-can-help-section .you-can-help .you-can-help__items .you-can-help__item  {
+  min-width: 170px;
+}
+
+}
 @media screen and (max-width: 768px) {
   /// Not-only 768
 

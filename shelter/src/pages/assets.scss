@@ -1,8 +1,19 @@
 @font-face {
   font-family: "Georgia";
   src: url("./fonts/georgia-regular.ttf") format("truetype"),
-    url("./fonts/Georgia.woff2") format("woff2"), url("./fonts/Georgia.woff") format("woff");
+    url("./fonts/Georgia.woff2") format("woff2"),
+    url("./fonts/Georgia.woff") format("woff");
   font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Georgia";
+  src: url("./fonts/georgia-bold.ttf") format("truetype"),
+    url("./fonts/Georgia-Bold.woff2") format("woff2"),
+    url("./fonts/Georgia-Bold.woff") format("woff");
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -20,7 +31,8 @@
 @font-face {
   font-family: "Arial";
   src: url("./fonts/arial-regular.ttf") format("truetype"),
-    url("./fonts/ArialMT.woff2") format("woff2"), url("./fonts/ArialMT.woff") format("woff");
+    url("./fonts/ArialMT.woff2") format("woff2"),
+    url("./fonts/ArialMT.woff") format("woff");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -265,7 +277,6 @@ li {
   }
 }
 
-
 /// PopUp
 
 * {
@@ -284,44 +295,49 @@ li {
   min-width: 100%;
   min-height: 100%;
   background: rgba(0, 0, 0, 0.4);
+  transform: scale(1.1);
   transition: 0.3s;
   z-index: 999;
 
   &.open {
-     opacity: 1;
-     pointer-events: auto;
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
   }
 }
 
 .pop-up-close {
   position: absolute;
   top: -52px;
-  right: -52px;
-  &:after{
+  right: -42px;
+  &:after {
     position: absolute;
-    content: '';
+    content: "";
     width: 12px;
     height: 12px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    background-image: url('https://www.svgrepo.com/show/12848/x-symbol.svg')
+    background-image: url("https://www.svgrepo.com/show/12848/x-symbol.svg");
   }
 }
 .pop-up {
   display: flex;
   position: relative;
   justify-content: center;
-  height: 500px;
-  margin: 100px;
-  background: #FAFAFA;
+  margin: 50px;
+  background: #fafafa;
   border-radius: 9px;
 }
 .pop-up__img-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   .pop-up-img {
     display: block;
-    width: 500px;
-    height: 500px;
+    width: calc(25vw + 180px);
+    max-width: 500px;
+    min-height: 100%;
     object-fit: cover;
     border-radius: 9px 0 0 9px;
   }
@@ -329,51 +345,160 @@ li {
 .pop-up__content {
   display: flex;
   flex-direction: column;
-  max-width: 355px;
-  padding: 50px 20px 40px 30px;
-  font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    letter-spacing: 0.06em;
+  max-width: 350px;
+  padding: min(3.9vw, 50px) min(1.6vw, 20px) 40px min(2.3vw, 30px);
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.06em;
   .pop-up__title {
     font-size: 35px;
     line-height: 130%;
     padding-bottom: 10px;
+    letter-spacing: 0.06em;
   }
-  .pop-up__subtitle{
+  .pop-up__subtitle {
     font-size: 20px;
     line-height: 115%;
+    letter-spacing: 0.06em;
   }
   .pop-up__descr {
     font-size: 15px;
     line-height: 110%;
-    padding: 40px 0;
+    padding: min(4.6vw, 40px) 0;
+    letter-spacing: 0.06em;
   }
   .pop-up__list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     font-size: 15px;
     line-height: 110%;
     padding-left: 14px;
   }
 }
-  .pop-up__item-list {
-    color: #F1CDB3;
-    .item-list__title {
-      font-weight: 700;
-      color: #000000;
-    }
-    .item-list__value {
-      color: #000000;
+.pop-up__item-list {
+  color: #f1cdb3;
+  list-style-type: disc;
+  .item-list__title {
+    font-weight: 700;
+    color: #000000;
+  }
+  .item-list__value {
+    color: #000000;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .pop-up {
+    margin: 9.2vw;
+  }
+  .pop-up__img-box {
+    .pop-up-img {
+      width: 45.6vw;
     }
   }
+  .pop-up__content {
+    padding: 10px 8px 37px 8px;
+    .pop-up__descr {
+      font-size: 13px;
+      padding: 20px 0;
+    }
+    .pop-up__list {
+      gap: 6px;
+    }
+  }
+}
 
+@media screen and (max-width: 600px) {
+  .pop-up {
+  //   display: flex;
+  //   position: relative;
+  //   justify-content: center;
+  flex-direction: column-reverse;
+    margin: 12.5vw;
+  //   background: #fafafa;
+  //   border-radius: 9px;
+  }
+  .pop-up__img-box {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+    .pop-up-img {
+  //     display: block;
+  //     width: calc(25vw + 180px);
+  //     max-width: 500px;
+  //     min-height: 100%;
+  //     object-fit: cover;
+      border-radius: 0 0 9px 9px;
+  min-height: auto;
+  width: auto;
+  height: 45.6vw;
+  min-width: 100%;
+    }
+  }
+  .pop-up__content {
+  //   display: flex;
+  //   flex-direction: column;
+  //   max-width: 350px;
+    padding: 3.1vw;
+  //   font-family: "Georgia";
+  //   font-style: normal;
+  //   font-weight: 400;
+  //   letter-spacing: 0.06em;
+  //   .pop-up__title {
+  //     font-size: 35px;
+  //     line-height: 130%;
+  //     padding-bottom: 10px;
+  //     letter-spacing: 0.06em;
+  //   }
+    .pop-up__subtitle {
+      text-align: center;
+  //     font-size: 20px;
+  //     line-height: 115%;
+  //     letter-spacing: 0.06em;
+    }
+    .pop-up__title {
+      text-align: center;
 
+    }
+    .pop-up__descr {
+      text-align: justify;
+  //     font-size: 15px;
+  //     line-height: 110%;
+  //     padding: min(4.6vw, 40px) 0;
+  //     letter-spacing: 0.06em;
+    }
+  //   .pop-up__list {
+  //     display: flex;
+  //     flex-direction: column;
+  //     gap: 12px;
+  //     font-size: 15px;
+  //     line-height: 110%;
+  //     padding-left: 14px;
+  //   }
+  // }
+  // .pop-up__item-list {
+  //   color: #f1cdb3;
+  //   list-style-type: disc;
+  //   .item-list__title {
+  //     font-weight: 700;
+  //     color: #000000;
+  //   }
+  //   .item-list__value {
+  //     color: #000000;
+  //   }
+  }
 
+}
 
-
-
-
-
-
+@media screen and (max-width: 400px) {
+  .pop-up-close {
+    right: -30px;
+  }
+    .pop-up__img-box {
+      .pop-up-img {
+        display: none;
+      }
+    }
+}

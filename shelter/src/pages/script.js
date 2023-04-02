@@ -418,18 +418,73 @@ document.querySelector('.our-friends__cards') && paginationModule();
 /// PopUp
 const popupModule = () => {
     const btns = document.querySelectorAll('[data-showcard]');
-    const btnClose = document.querySelector('.pop-up-close')
-    console.log(btns)
     const popup = document.querySelector('.pop-up-container');
-    const popupBox = document.querySelector('.pop-up')
     const closeESC = (e) => {
         if (e.key === 'Escape') popup.classList.remove('open');
         document.onkeydown = null
     }
+    const renderContent = (dataCard) => {
+        const { picture, name, type, breed, description, age, inoculations, diseases, parasites } = dataCard
+        const $popup = document.createElement('div');
+        $popup.classList.add('pop-up');
+        $popup.innerHTML = `
+      <button class="btn-circle btn-circle__transparent pop-up-close"></button>
+        <div class="pop-up__img-box">
+          <img src="../${picture}" alt="dog" class="pop-up-img">
+        </div>
+        <div class="pop-up__content">
+          <div class="pop-up__title">${name}</div>
+          <div class="pop-up__subtitle">${type} - ${breed}</div>
+          <div class="pop-up__descr">${description}</div>
+          <ul class="pop-up__list">
+            <li class="pop-up__item-list">
+              <span class="item-list__title">
+                Age:
+              </span>
+              <span class="item-list__value">
+                ${age}
+              </span>
+            </li>
+            <li class="pop-up__item-list">
+              <span class="item-list__title">
+                Inoculations:
+              </span>
+              <span class="item-list__value">
+              ${inoculations.join(', ')}
+              </span>
+            </li><li class="pop-up__item-list">
+              <span class="item-list__title">
+                Diseases:
+              </span>
+              <span class="item-list__value">
+              ${diseases.join(', ')}
+              </span>
+            </li><li class="pop-up__item-list">
+              <span class="item-list__title">
+                Parasites:
+              </span>
+              <span class="item-list__value">
+                ${parasites.join(', ')}
+              </span>
+            </li>
+          </ul>
+        </div>`
+        return $popup
+    }
     const handler = function (e) {
+        popup.innerHTML = '';
+        const sourceCards = document.querySelector('.pets') ? cardsPagination.getCards() : cardsSlider.getCards();
+        sourceCards.forEach(card => {
+            if (card.link === this.dataset.showcard) {
+                const popupContent = renderContent(card)
+                popup.append(popupContent);
+            }
+        })
         popup.classList.add('open');
         document.body.style.overflow = 'hidden';
         document.onkeydown = closeESC;
+        const btnClose = document.querySelector('.pop-up-close');
+        btnClose.onclick = closePopUp;
     }
     const closePopUp = () => {
         popup.classList.remove('open');
@@ -442,28 +497,9 @@ const popupModule = () => {
         btn.onclick = handler;
     })
 
-    btnClose.onclick = closePopUp;
     popup.onclick = closePopUpOverflow;
 }
 window.onload = popupModule;
 const $parent = document.querySelector('.our-friends-section');
 $parent.onclick = popupModule;
 
-// class Cards {
-//     /// хранение, удаление, получение, редактирование карт
-// }
-// function pagination() {
-//     const cards = new Cards()
-//     /// получаю данные через fetch и отправляю в cards
-//     /// различные функции для работы pagination
-// }
-// function slider() {
-//     const cards = new Cards()
-//     /// получаю данные через fetch и отправляю в cards
-//     /// различные функции для работы slider
-// }
-// function popup() {
-//     // И вот тут я задумался, а не много ли fetch запросов будет чтобы получить данные для popup.
-//     // По хорошему на странице main мне нужны для popup карты из slider
-//     // А на странице pets карты из pagination
-// }
