@@ -78,7 +78,7 @@ h1 {
   color: #ffffff;
 }
 
-h3 {
+h3, h1.our-friends__title {
   font-family: "Georgia";
   font-style: normal;
   font-weight: 400;
@@ -87,6 +87,7 @@ h3 {
   letter-spacing: 0.06em;
   color: #545454;
 }
+
 .disabled {
   pointer-events: none;
   cursor: default;
