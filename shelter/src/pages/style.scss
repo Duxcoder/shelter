@@ -647,7 +647,6 @@
     .navigation__li {
       .navigation__link {
         font-size: 32px;
-
       }
     }
     }
@@ -686,6 +685,11 @@
 @media screen and (max-width: 480px) {
   /// Main 480
   .main {
+
+    /// About
+    .text {
+      text-align: justify;
+    }
     /// Our-friends 480
     .our-friends-section {
       height: auto;
@@ -723,6 +727,7 @@
         }
       }
     }
+
     /// Help 480
     .you-can-help-section {
       padding: 42px 0;
@@ -867,9 +872,7 @@
         }
         .about-section__content {
           gap: 23px;
-          .text {
-            text-align: justify;
-          }
+
           .about-section__title {
             font-size: 25px;
             line-height: 130%;
