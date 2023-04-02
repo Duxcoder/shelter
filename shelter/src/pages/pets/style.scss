@@ -2,7 +2,7 @@
 .header {
   &.pets {
     .top-bar {
-        height: 120px;
+      height: 120px;
       .top-bar__logo-box {
         .top-bar__logo {
           color: #545454;
@@ -24,7 +24,7 @@
           }
         }
         .navigation__link_active {
-            color: #292929;
+          color: #292929;
         }
       }
     }
@@ -62,39 +62,44 @@
 
 @media screen and (max-width: 768px) {
   .main {
-  &.pets{
-    .our-friends-section {
-      padding-bottom: 77px;
-      .our-friends {
-        .our-friends__cards {
-          padding-top: 29px;
-          padding-bottom: 39px;
+    &.pets {
+      .our-friends-section {
+        padding-bottom: 77px;
+        .our-friends {
+          .our-friends__cards {
+            padding-top: 29px;
+            padding-bottom: 39px;
+          }
         }
       }
-
     }
   }
+}
+@media screen and (max-width: 767px) {
+  .header {
+    &.pets {
+      .navigation {
+        background: #fff;
+      }
+    }
   }
 }
-
 
 @media screen and (max-width: 480px) {
   .main {
-  &.pets{
-    .our-friends-section {
-      padding-bottom: 42px;
-      .our-friends {
-        .our-friends__cards {
-          padding-top: 42px;
-          padding-bottom: 41px;
-        }
-        .our-friends__pagination {
-          gap: 10px;
+    &.pets {
+      .our-friends-section {
+        padding-bottom: 42px;
+        .our-friends {
+          .our-friends__cards {
+            padding-top: 42px;
+            padding-bottom: 41px;
+          }
+          .our-friends__pagination {
+            gap: 10px;
+          }
         }
       }
-
     }
   }
-  }
 }
-

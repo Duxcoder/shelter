@@ -219,12 +219,30 @@ const sliderModule = () => {
 /// Hamburger
 const hamburgerModule = () => {
     const btn = document.querySelector(".menu-wrapper");
+    const logo = document.querySelector('.top-bar__logo-box');
+    const nav = document.querySelector(".navigation");
+    const header = document.querySelector(".header");
+    const links = document.querySelectorAll('.navigation__link');
     const handler = function () {
+        const setHeight = (value) => header.style.height = value
+        const isOpenBurger = nav.classList.contains('navigation__active')
+        isOpenBurger ? setTimeout(setHeight, 400, 'auto') : setHeight('100vh')
         this.classList.toggle('animate');
+        nav.classList.toggle('navigation__active');
+        logo.style.pointerEvents = logo.style.pointerEvents === 'none' ? 'auto' : 'none'
     }
+    const closeOverflow = function (e) {
+        const target = e.target
+        const isOpenBurger = nav.classList.contains('navigation__active')
+        if (isOpenBurger){
+           !nav.contains(target) && target !== btn ? handler.apply(btn) : null
+        }
+    }
+    links.forEach(link => link.onclick = handler.bind(btn));
     btn.onclick = handler
-}
+    header.onclick = closeOverflow
 
+}
 
 
 /// Pagination
