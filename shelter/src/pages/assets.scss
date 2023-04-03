@@ -502,4 +502,16 @@ li {
         display: none;
       }
     }
-}
+  }
+
+  @media screen and (max-width: 1279px) {
+    .main .our-friends-section .our-friends .our-friends__slider .slider__items .card:nth-child(3){
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .main .our-friends-section .our-friends .our-friends__slider .slider__items .card:nth-child(n+2){
+      display: none;
+    }
+  }

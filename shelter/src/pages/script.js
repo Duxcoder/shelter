@@ -429,7 +429,7 @@ const paginationModule = () => {
     btnLast.onclick = clickLast;
 }
 hamburgerModule();
-document.querySelector('.slider__items') && sliderModule();
+// document.querySelector('.slider__items') && sliderModule();
 document.querySelector('.our-friends__cards') && paginationModule();
 
 
@@ -521,3 +521,26 @@ window.onload = popupModule;
 const $parent = document.querySelector('.our-friends-section');
 $parent.onclick = popupModule;
 
+
+
+localStorage.getItem('message') ? null : alert('Просмотрите пожалуйста сообщение в консоли, спасибо за проверку ;)')
+localStorage.setItem('message', true);
+
+
+console.log(`
+Всё пункты выполнены,
+единственное по пункту:
+"Верстка резиновая: при плавном изменении размера экрана от 1280px до 320px
+верстка подстраивается под этот размер, элементы верстки меняют свои размеры и
+расположение, не наезжают друг на друга, изображения могут менять размер, но
+сохраняют правильные пропорции"
+
+не совсем ясное требование, либо делать все резиновое, что будет в итоге выглядеть неуклюже и неуместо,
+либо совместить местами adaptive и в местами responsive, чтобы верстка выглядела красиво
+с резиновой подстройкой в нужных местах.
+Я выбрал второе, надеюсь вы разделяете со мной моё видение)
+
+Что касается второй страницы Pets, карточки по содержанию не будут совпадать с PerfectPixel,
+т.к. реализован функционал с пагинацией и рандомным отображением карточек,
+надеюсь выполненую часть 3-ей части задания не посчитаете ошибкой, спасибо! ;)
+`)

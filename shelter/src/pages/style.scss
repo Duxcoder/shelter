@@ -131,7 +131,7 @@
       display: flex;
       flex-wrap: wrap-reverse;
       justify-content: center;
-      gap: 120px;
+      gap: clamp(20px, 10vw, 120px);
       padding: 79px 20px 100px 20px;
       .about-section__pictures {
         width: calc(100% - 550px);
@@ -387,7 +387,7 @@
     justify-content: center;
     flex-wrap: wrap;
     min-height: 350px;
-    column-gap: 160px;
+    column-gap: clamp(40px, 12.5vw, 160px);
     row-gap: 10px;
     padding-top: 40px;
     box-sizing: border-box;
@@ -598,6 +598,8 @@
 
   body:has(.navigation__active) {
     overflow: hidden;
+    touch-action: none;
+    -ms-touch-action: none;
   }
   .header {
     overflow: hidden;
@@ -687,6 +689,15 @@
   .main {
 
     /// About
+    .about {
+      .about-section {
+        .about-section__content {
+          .about-section__title {
+            text-align: center;
+          }
+        }
+      }
+    }
     .text {
       text-align: justify;
     }
