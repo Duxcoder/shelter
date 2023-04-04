@@ -188,26 +188,6 @@ const sliderModule = () => {
     }
     arrowRight.onclick = next;
     arrowLeft.onclick = prev;
-
-    // fetch('cards.json')
-    //     .then(
-    //         function (response) {
-    //             if (response.status !== 200) {
-    //                 console.log('Looks like there was a problem. Status Code: ' +
-    //                     response.status);
-    //                 return;
-    //             }
-    //             response.json().then(function (data) {
-    //                 data.forEach(card => {
-    //                     cards.add(card);
-    //                 })
-    //                 slider.startSlider(cards.createRandomCards(placesForCards))
-    //             });
-    //         }
-    //     )
-    //     .catch(function (err) {
-    //         console.log('Fetch Error :-S', err);
-    //     });
     cardsSlider.add('cards.json')
         .then(() => {
             slider.startSlider(cardsSlider.createRandomCards(placesForCards))
@@ -223,36 +203,35 @@ const hamburgerModule = () => {
     const nav = document.querySelector(".navigation");
     const header = document.querySelector(".header");
     const links = document.querySelectorAll('.navigation__link');
+    const isOpenBurger = () => nav.classList.contains('navigation__active')
     const handler = function () {
-        const setHeight = (value) => header.style.height = value
-        const isOpenBurger = nav.classList.contains('navigation__active')
-        isOpenBurger ? setTimeout(setHeight, 400, 'auto') : setHeight('100vh')
-        this.classList.toggle('animate');
         nav.classList.toggle('navigation__active');
+        const setHeight = (value) => header.style.height = value
+        isOpenBurger() ? setHeight('100vh') : setTimeout(setHeight, 400, 'auto')
+        this.classList.toggle('animate');
         logo.style.pointerEvents = logo.style.pointerEvents === 'none' ? 'auto' : 'none'
     }
     const closeOverflow = function (e) {
         const target = e.target
-        const isOpenBurger = nav.classList.contains('navigation__active')
-        if (isOpenBurger){
-           !nav.contains(target) && target !== btn ? handler.apply(btn) : null
+        if (isOpenBurger()) {
+            !nav.contains(target) && target !== btn && target.contains(btn) ? handler.apply(btn) : null
         }
     }
-    links.forEach(link => link.onclick = handler.bind(btn));
     btn.onclick = handler
     header.onclick = closeOverflow
 
+    /// fix when changing the page width, the burger menu does not open automatically
+    const media = window.matchMedia('(max-width: 767px)');
+    function changeSreenWidth() {
+        links.forEach(link => link.onclick = media.matches ? handler.bind(btn) : null);
+    }
+    media.addEventListener('change', changeSreenWidth);
+    window.addEventListener('load', changeSreenWidth);
 }
 
 
 /// Pagination
 const paginationModule = () => {
-    // async function getData() {
-    //     const response = await fetch('../cards.json');
-    //     const data = await response.json();
-    //     return data
-    // }
-
 
 
     class Pagination {
@@ -319,13 +298,6 @@ const paginationModule = () => {
             pagination.createCardsArray();
             pagination.start(placesForCards)
         })
-    // getData().then(function (data) {
-    //     data.forEach(card => {
-    //         cards.add(card);
-    //     });
-    //     pagination.createCardsArray();
-    //     pagination.start(placesForCards)
-    // })
     let placesForCards = 8;
 
     const checkWindowSize = (places) => {
@@ -429,7 +401,7 @@ const paginationModule = () => {
     btnLast.onclick = clickLast;
 }
 hamburgerModule();
-// document.querySelector('.slider__items') && sliderModule();
+document.querySelector('.slider__items') && sliderModule();
 document.querySelector('.our-friends__cards') && paginationModule();
 
 
@@ -522,25 +494,3 @@ const $parent = document.querySelector('.our-friends-section');
 $parent.onclick = popupModule;
 
 
-
-localStorage.getItem('message') ? null : alert('Просмотрите пожалуйста сообщение в консоли, спасибо за проверку ;)')
-localStorage.setItem('message', true);
-
-
-console.log(`
-Всё пункты выполнены,
-единственное по пункту:
-"Верстка резиновая: при плавном изменении размера экрана от 1280px до 320px
-верстка подстраивается под этот размер, элементы верстки меняют свои размеры и
-расположение, не наезжают друг на друга, изображения могут менять размер, но
-сохраняют правильные пропорции"
-
-не совсем ясное требование, либо делать все резиновое, что будет в итоге выглядеть неуклюже и неуместо,
-либо совместить местами adaptive и в местами responsive, чтобы верстка выглядела красиво
-с резиновой подстройкой в нужных местах.
-Я выбрал второе, надеюсь вы разделяете со мной моё видение)
-
-Что касается второй страницы Pets, карточки по содержанию не будут совпадать с PerfectPixel,
-т.к. реализован функционал с пагинацией и рандомным отображением карточек,
-надеюсь выполненую часть 3-ей части задания не посчитаете ошибкой, спасибо! ;)
-`)
