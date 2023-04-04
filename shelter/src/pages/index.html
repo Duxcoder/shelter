@@ -1,4 +1,5 @@
 @@include('../parts/head.html', {
+  "favicon": "./images/fav.svg",
   "classPage": "",
   "aboutActive" : "navigation__link_active disabled",
   "logo-link": "#no_scroll",
@@ -126,31 +127,40 @@
           <div class="you-can-help">
             <h3 class="you-can-help__title">How you can help our shelter</h3>
             <div class="you-can-help__items">
-              <div class="you-can-help__item item_food">
+              <div class="you-can-help__item">
+                <div class="item-icon item_food"></div>
                 <span class="item_title">Pet food</span>
               </div>
-              <div class="you-can-help__item item_transport">
+              <div class="you-can-help__item">
+                <div class="item-icon item_transport"></div>
                 <span class="item_title">Transportation</span>
               </div>
-              <div class="you-can-help__item item_toys">
+              <div class="you-can-help__item">
+                <div class="item-icon item_toys"></div>
                 <span class="item_title">Toys</span>
               </div>
-              <div class="you-can-help__item item_bowls">
+              <div class="you-can-help__item">
+                <div class="item-icon item_bowls"></div>
                 <span class="item_title">Bowls and cups</span>
               </div>
-              <div class="you-can-help__item item_shampoo">
+              <div class="you-can-help__item ">
+                <div class="item-icon item_shampoo"></div>
                 <span class="item_title">Shampoos</span>
               </div>
-              <div class="you-can-help__item item_vitamins">
+              <div class="you-can-help__item ">
+                <div class="item-icon item_vitamins"></div>
                 <span class="item_title">Vitamins</span>
               </div>
-              <div class="you-can-help__item item_medic">
+              <div class="you-can-help__item ">
+                <div class="item-icon item_medic"></div>
                 <span class="item_title">Medicines</span>
               </div>
-              <div class="you-can-help__item item_collars">
+              <div class="you-can-help__item">
+                <div class="item-icon item_collars"></div>
                 <span class="item_title">Collars / leashes</span>
               </div>
-              <div class="you-can-help__item item_sleep">
+              <div class="you-can-help__item">
+                <div class="item-icon item_sleep"></div>
                 <span class="item_title">Sleeping areas</span>
               </div>
             </div>
@@ -180,4 +190,6 @@
         </div>
       </section>
     </main>
-    @@include('../parts/footer.html')
+    @@include('../parts/footer.html', {
+      'scriptSrc': './script.js'
+    })
