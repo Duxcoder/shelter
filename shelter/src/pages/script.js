@@ -243,6 +243,8 @@ const paginationModule = () => {
             this.currentNumberPage = 1;
         }
         start = (places) => {
+            console.log(this.currentNumberPage, 'current num page pagination')
+            this.pages = {};
             this.places = places
             this.createPagesCards();
             this.renderPage(this.currentNumberPage);
@@ -320,6 +322,7 @@ const paginationModule = () => {
             return $card
         }
         renderPage = (numPage) => {
+            this.currentNumberPage = numPage;
             this.$parentContainer.innerHTML = '';
             this.pages[numPage].forEach(card => {
                 const $card = this.createHtmlCard(card);
@@ -329,34 +332,16 @@ const paginationModule = () => {
 
     }
 
-    const pagination = new Pagination('.our-friends__cards');
-    cardsPagination.add('../cards.json')
-        .then(() => {
-            pagination.createCardsArray();
-            pagination.start(placesForCards)
-        })
-    let placesForCards = 8;
 
-    const checkWindowSize = (places) => {
-        switch (true) {
-            case document.documentElement.clientWidth < 640: places = 3
-                break
-            case document.documentElement.clientWidth < 1280: places = 6
-                break
-            default: places = 8
-        }
-        return places
-    }
-    placesForCards = checkWindowSize()
-    window.addEventListener('resize', (e) => {
-        let prevPlaces = placesForCards;
-        placesForCards = checkWindowSize()
-        prevPlaces !== placesForCards && (pagination.start(placesForCards))
-    });
     class PaginationControls {
         constructor(btnCurrent) {
             this.btnCurrent = btnCurrent
             this.currentNumberPage = 1;
+        }
+        update = (placesForCards) => {
+            const numPages = Math.round(pagination.getCards().length / placesForCards);
+            if (this.currentNumberPage > numPages) this.currentNumberPage = numPages
+            this.submitToRender();
         }
         submitToRender = () => {
             pagination.renderPage(this.currentNumberPage);
@@ -382,6 +367,29 @@ const paginationModule = () => {
             return this.currentNumberPage
         }
     }
+
+
+    const checkWindowSize = (places) => {
+        switch (true) {
+            case document.documentElement.clientWidth < 640: places = 3
+                break
+            case document.documentElement.clientWidth < 1280: places = 6
+                break
+            default: places = 8
+        }
+        return places
+    }
+
+    let placesForCards = checkWindowSize()
+    const pagination = new Pagination('.our-friends__cards');
+    cardsPagination.add('../cards.json')
+        .then(() => {
+            pagination.createCardsArray();
+            pagination.start(placesForCards)
+        });
+
+
+
     const $parentControls = document.querySelector('.our-friends__pagination');
     const $btnControls = $parentControls.querySelectorAll('[data-btn]');
     const btnFirst = $btnControls[0];
@@ -434,13 +442,28 @@ const paginationModule = () => {
         activeBtns([btnFirst, btnPrev]);
     }
 
+    window.addEventListener('resize', (e) => {
+        let prevPlaces = placesForCards;
+        placesForCards = checkWindowSize()
+        if (prevPlaces !== placesForCards) {
+            paginationControls.update(placesForCards);
+            pagination.start(placesForCards);
+            if (paginationControls.getCurrentPageNumber() < Object.keys(pagination.getPages()).length) {
+                activeBtns([btnLast, btnNext])
+                if (!btnNext.onclick) btnNext.onclick = clickNext;
+                if (!btnLast.onclick) btnLast.onclick = clickLast;
+            }
+            if (paginationControls.getCurrentPageNumber() === Object.keys(pagination.getPages()).length) {
+            inactiveBtns([btnLast, btnNext]);
+            }
+        }
+    });
+
+
+
     btnNext.onclick = clickNext;
     btnLast.onclick = clickLast;
 }
-hamburgerModule();
-document.querySelector('.slider__items') && sliderModule();
-document.querySelector('.our-friends__cards') && paginationModule();
-
 
 /// PopUp
 const popupModule = () => {
@@ -526,6 +549,11 @@ const popupModule = () => {
 
     popup.onclick = closePopUpOverflow;
 }
+
+
+hamburgerModule();
+document.querySelector('.slider__items') && sliderModule();
+document.querySelector('.our-friends__cards') && paginationModule();
 window.onload = popupModule;
 const $parent = document.querySelector('.our-friends-section');
 $parent.onclick = popupModule;
