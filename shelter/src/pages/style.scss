@@ -1,3 +1,9 @@
+@mixin hover {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
 /// Header
 .header {
   position: absolute;
@@ -39,8 +45,6 @@
   .menu-wrapper {
     display: none;
   }
-  .navigation {
-  }
   .navigation__list {
     display: flex;
     gap: 36px;
@@ -54,9 +58,11 @@
         line-height: 160%;
         color: #cdcdcd;
         border-bottom: 3px solid transparent;
-        transition: all 0.3s ease-in-out;
-        &:hover {
-          color: #fafafa;
+        transition: color .3s ease-in-out, border .3s ease-in-out;
+        @include hover {
+          &:hover {
+            color: #fafafa;
+          }
         }
         &:active {
           color: #fafafa;
@@ -70,10 +76,8 @@
     }
   }
 }
-
 /// Main
 /// Not-only
-
 .not-only-section {
   position: relative;
   height: 75vw;
@@ -121,9 +125,7 @@
     }
   }
 }
-
 /// About
-
 .main {
   .about {
     min-height: 588px;
@@ -152,9 +154,7 @@
       }
     }
   }
-
   /// Our-friend
-
   .our-friends-section {
     height: 877px;
     background: #f6f6f6;
@@ -209,9 +209,7 @@
       }
     }
   }
-
   /// How-you-can-help
-
   .you-can-help-section {
     min-height: 611px;
     background: #ffffff;
@@ -288,9 +286,7 @@
   .item_sleep {
     background-image: url("./images/icon-sleeping-area.svg");
   }
-
   /// Donation
-
   .donation-section {
     background: #f6f6f6;
     min-height: 462px;
@@ -350,8 +346,10 @@
           background-position-x: 15px;
           transition: all 0.3s ease-in-out;
           box-sizing: border-box;
-          &:hover {
-            background-color: #fddcc4;
+          @include hover {
+            &:hover {
+              background-color: #fddcc4;
+            }
           }
           &:active {
             background-color: #f1cdb3;
@@ -369,9 +367,7 @@
     }
   }
 }
-
 /// Footer
-
 .footer {
   position: relative;
   // min-height: 350px;
@@ -399,7 +395,6 @@
       width: 300px;
       gap: 32px;
     }
-
     .footer-content__title {
       color: #ffffff;
     }
@@ -411,20 +406,22 @@
         display: flex;
         align-items: center;
         gap: 20px;
-        &:hover {
-          .footer-content__icon {
-            background-color: #fde3d0;
-          }
-          .footer-content__text {
-            color: #fde3d0;
-          }
-          &:active {
+        @include hover {
+          &:hover {
             .footer-content__icon {
-              background-color: #d4a27d;
+              background-color: #fde3d0;
             }
             .footer-content__text {
-              color: #d4a27d;
+              color: #fde3d0;
             }
+          }
+        }
+        &:active {
+          .footer-content__icon {
+            background-color: #d4a27d;
+          }
+          .footer-content__text {
+            color: #d4a27d;
           }
         }
         .footer-content__icon {
@@ -467,7 +464,6 @@
     }
   }
 }
-
 // Slider overflow
 .overflow_slider {
   display: flex;
@@ -475,19 +471,16 @@
   width: 1140px;
   overflow: hidden;
 }
-
 @media screen and (min-width: 320px) and (max-width: 499px) {
   .overflow_slider {
     width: 300px;
   }
 }
-
 @media screen and (min-width: 500px) and (max-width: 767px) {
   .overflow_slider {
     width: 450px;
   }
 }
-
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .main {
     .overflow_slider {
@@ -504,17 +497,17 @@
     }
   }
 }
-
-
 @media screen and (max-width: 1110px) {
-.main .you-can-help-section .you-can-help .you-can-help__items .you-can-help__item  {
-  min-width: 170px;
-}
-
+  .main
+    .you-can-help-section
+    .you-can-help
+    .you-can-help__items
+    .you-can-help__item {
+    min-width: 170px;
+  }
 }
 @media screen and (max-width: 768px) {
   /// Not-only 768
-
   .not-only-section {
     height: 284vw;
     max-height: 1165px;
@@ -550,7 +543,6 @@
         }
       }
     }
-
     /// Help 768
     .you-can-help-section {
       .you-can-help {
@@ -564,7 +556,6 @@
         }
       }
     }
-
     /// Donation 768
     .donation-section {
       .donation {
@@ -573,7 +564,6 @@
       }
     }
   }
-
   /// Footer 768
   .footer {
     .footer-content {
@@ -592,10 +582,8 @@
     }
   }
 }
-
 @media screen and (max-width: 767px) {
   /// Header 720
-
   body:has(.navigation__active) {
     overflow: hidden;
     touch-action: none;
@@ -609,7 +597,7 @@
       left: 0;
       height: 100vh;
       width: 100%;
-      content: '';
+      content: "";
       opacity: 0.5;
       transition: 0.4s;
       pointer-events: none;
@@ -620,7 +608,7 @@
       left: 0;
       height: 100vh;
       width: 100%;
-      content: '';
+      content: "";
       background: rgb(41, 41, 41);
       opacity: 0.6;
     }
@@ -628,29 +616,29 @@
       display: flex;
       align-items: center;
       justify-content: center;
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100vh;
-    width: 320px;
-    background: #292929;
-    transform: translateX(320px);
-    transition: 0.4s ease-in-out;
-    opacity: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100vh;
+      width: 320px;
+      background: #292929;
+      transform: translateX(320px);
+      transition: 0.4s ease-in-out;
+      opacity: 0;
     }
     .navigation__active {
       transform: translateX(0px);
-    opacity: 1;
+      opacity: 1;
     }
     .navigation__list {
       gap: 40px;
-    flex-direction: column;
-    align-items: center;
-    .navigation__li {
-      .navigation__link {
-        font-size: 32px;
+      flex-direction: column;
+      align-items: center;
+      .navigation__li {
+        .navigation__link {
+          font-size: 32px;
+        }
       }
-    }
     }
     .menu-wrapper {
       display: block;
@@ -683,11 +671,9 @@
     }
   }
 }
-
 @media screen and (max-width: 480px) {
   /// Main 480
   .main {
-
     /// About
     .about {
       .about-section {
@@ -738,7 +724,6 @@
         }
       }
     }
-
     /// Help 480
     .you-can-help-section {
       padding: 42px 0;

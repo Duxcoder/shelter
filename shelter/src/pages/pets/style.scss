@@ -33,7 +33,6 @@
     }
   }
 }
-
 .main {
   &.pets {
     flex: 1;
@@ -95,7 +94,6 @@
     column-gap: clamp(40px, 5vw, 320px);
   }
 }
-
 @media screen and (max-width: 768px) {
   .main {
     &.pets {
@@ -114,7 +112,6 @@
     }
   }
 }
-
 @media screen and (max-width: 767px) {
   .header {
     &.pets {
@@ -124,7 +121,6 @@
     }
   }
 }
-
 @media screen and (max-width: 480px) {
   .main {
     &.pets {

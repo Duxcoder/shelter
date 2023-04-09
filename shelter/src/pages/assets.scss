@@ -1,3 +1,8 @@
+@mixin hover {
+  @media (hover: hover) {
+    @content;
+  }
+}
 @font-face {
   font-family: "Georgia";
   src: url("./fonts/georgia-regular.ttf") format("truetype"),
@@ -7,7 +12,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Georgia";
   src: url("./fonts/georgia-bold.ttf") format("truetype"),
@@ -17,7 +21,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Georgia";
   src: url("./fonts/georgia-italic.ttf") format("truetype"),
@@ -27,7 +30,6 @@
   font-style: italic;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Arial";
   src: url("./fonts/arial-regular.ttf") format("truetype"),
@@ -37,7 +39,6 @@
   font-weight: 400;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Arial";
   src: url("./fonts/arial-italic.ttf") format("truetype"),
@@ -47,11 +48,9 @@
   font-style: italic;
   font-display: swap;
 }
-
 html {
   scroll-behavior: smooth;
 }
-
 body {
   display: flex;
   height: 100vh;
@@ -77,7 +76,6 @@ h1 {
   line-height: 130%;
   color: #ffffff;
 }
-
 h3,
 h1.our-friends__title {
   font-family: "Georgia";
@@ -88,7 +86,6 @@ h1.our-friends__title {
   letter-spacing: 0.06em;
   color: #545454;
 }
-
 .disabled {
   pointer-events: none;
   cursor: default;
@@ -120,13 +117,11 @@ li {
   pointer-events: none;
   background: url("./images/background.png");
 }
-
 .pos-rel-inx-2 {
   position: relative;
   z-index: 2;
 }
 /// CONTAINTER
-
 .container {
   margin: 0 auto;
   height: 100%;
@@ -147,7 +142,6 @@ li {
   }
 }
 /// BUTTONS
-
 .btn {
   display: inline-flex;
   justify-content: center;
@@ -164,8 +158,10 @@ li {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
-.btn:hover {
-  background: #fddcc4;
+@include hover {
+  .btn:hover {
+    background: #fddcc4;
+  }
 }
 .btn__fill {
   background: #f1cdb3;
@@ -177,8 +173,10 @@ li {
   background: transparent;
   border: 2px solid #f1cdb3;
   padding: 13px 43px;
-  &:hover {
-    border: 2px solid #fddcc4;
+  @include hover {
+    &:hover {
+      border: 2px solid #fddcc4;
+    }
   }
   &:active {
     background: #f1cdb3;
@@ -205,9 +203,11 @@ li {
   &.btn-circle__transparent {
     background: transparent;
     border: 2px solid #f1cdb3;
-    &:hover {
-      background: #fddcc4;
-      border: 2px solid #fddcc4;
+    @include hover {
+      &:hover {
+        background: #fddcc4;
+        border: 2px solid #fddcc4;
+      }
     }
     &:active {
       border: 2px solid #f1cdb3;
@@ -219,24 +219,26 @@ li {
     border: 2px solid #cdcdcd;
     color: #cdcdcd;
     cursor: default;
-    &:hover {
-      background: transparent;
-      border: 2px solid #cdcdcd;
+    @include hover {
+      &:hover {
+        background: transparent;
+        border: 2px solid #cdcdcd;
+      }
     }
   }
   &.btn-circle__active {
     background: #f1cdb3;
-    &:hover {
-      background: #fddcc4;
+    @include hover {
+      &:hover {
+        background: #fddcc4;
+      }
     }
     &:active {
       background: #f1cdb3;
     }
   }
 }
-
 /// Card
-
 .card {
   position: relative;
   z-index: 1;
@@ -250,13 +252,15 @@ li {
   box-sizing: border-box;
   padding-bottom: 30px;
   transition: all 0.3s ease-in-out;
-  &:hover {
-    background: #ffffff;
-    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
-    cursor: pointer;
-    .btn__transparent {
-      background: #fddcc4;
-      border: 2px solid #fddcc4;
+  @include hover {
+    &:hover {
+      background: #ffffff;
+      box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+      cursor: pointer;
+      .btn__transparent {
+        background: #fddcc4;
+        border: 2px solid #fddcc4;
+      }
     }
   }
   .card__pic {
@@ -278,13 +282,10 @@ li {
     color: #545454;
   }
 }
-
 /// PopUp
-
 * {
   margin: 0;
 }
-
 .pop-up-container {
   opacity: 0;
   pointer-events: none;
@@ -300,14 +301,12 @@ li {
   transform: scale(1.1);
   transition: 0.3s;
   z-index: 999;
-
   &.open {
     opacity: 1;
     pointer-events: auto;
     transform: scale(1);
   }
 }
-
 .pop-up-close {
   position: absolute;
   top: -52px;
@@ -390,7 +389,6 @@ li {
     color: #000000;
   }
 }
-
 @media screen and (max-width: 768px) {
   .pop-up {
     margin: 9.2vw;
@@ -411,7 +409,6 @@ li {
     }
   }
 }
-
 @media screen and (max-width: 600px) {
   .pop-up {
     flex-direction: column-reverse;
@@ -439,7 +436,6 @@ li {
     }
   }
 }
-
 @media screen and (max-width: 400px) {
   .pop-up-close {
     right: -30px;
