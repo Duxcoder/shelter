@@ -53,6 +53,34 @@
           row-gap: 30px;
           column-gap: 40px;
           padding: 59px 0;
+          &.animate {
+            @keyframes animate {
+              0% {
+                opacity: 1;
+              }
+              50% {
+                opacity: 0;
+              }
+              100% {
+                opacity: 1;
+              }
+            }
+          animation: animate 0.3s;
+          }
+          &.animates {
+            @keyframes animates {
+              0% {
+                opacity: 1;
+              }
+              50% {
+                opacity: 0;
+              }
+              100% {
+                opacity: 1;
+              }
+            }
+          animation: animates 0.3s;
+          }
         }
         .our-friends__pagination {
           display: flex;

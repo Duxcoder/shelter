@@ -237,6 +237,7 @@ const paginationModule = () => {
     class Pagination {
         constructor(parentContainerClass) {
             this.$parentContainer = document.querySelector(parentContainerClass);
+            this.$parentContainer.classList.toggle('animates')
             this.cards = [];
             this.pages = {};
             this.places = null;
@@ -302,6 +303,7 @@ const paginationModule = () => {
                     this.pages[i + 1] = copyCards
                 }
             }
+
         }
         getCards = () => {
             return this.cards
@@ -344,8 +346,15 @@ const paginationModule = () => {
             this.submitToRender();
         }
         submitToRender = () => {
-            pagination.renderPage(this.currentNumberPage);
-            this.btnCurrent.textContent = this.currentNumberPage;
+               // animate
+               document.querySelector('.our-friends__cards').classList.toggle('animates')
+               document.querySelector('.our-friends__cards').classList.toggle('animate')
+
+            setTimeout(() => {
+                pagination.renderPage(this.currentNumberPage);
+                this.btnCurrent.textContent = this.currentNumberPage;
+            }, 150)
+
         }
         first = () => {
             this.currentNumberPage = 1;
@@ -454,7 +463,7 @@ const paginationModule = () => {
                 if (!btnLast.onclick) btnLast.onclick = clickLast;
             }
             if (paginationControls.getCurrentPageNumber() === Object.keys(pagination.getPages()).length) {
-            inactiveBtns([btnLast, btnNext]);
+                inactiveBtns([btnLast, btnNext]);
             }
         }
     });
@@ -463,6 +472,8 @@ const paginationModule = () => {
 
     btnNext.onclick = clickNext;
     btnLast.onclick = clickLast;
+
+
 }
 
 /// PopUp
