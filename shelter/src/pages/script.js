@@ -248,12 +248,49 @@ const paginationModule = () => {
             this.renderPage(this.currentNumberPage);
         }
         createCardsArray = () => {
-            while (this.cards.length < 48) {
-                this.cards = this.cards.concat(cardsPagination.createRandomCards(8))
+
+            const firstFourNotContainsTwoLast = (current) => {
+                console.log('run 1 step', this.cards)
+                if (!current.slice(0, 4).includes(this.cards.at(-1)) && !current.slice(0, 4).includes(this.cards.at(-2))) {
+                    this.cards = this.cards.concat(current);
+                    console.log('complete 1 step')
+
+                    return true
+                }
+                return false
             }
+            const firstTwoNotContainsFourLast = (current) => {
+                console.log('run 2 step')
+
+                if (!this.cards.slice(-4).includes(current[0]) && !this.cards.slice(-4).includes(current[1])) {
+                    this.cards = this.cards.concat(current);
+                    console.log('complete 2 step')
+                    return true
+
+                }
+                return false
+            }
+
+            let current = []
+            let correctArr = false
+            for (let i = 0; i < 2; i++) {
+                this.cards = this.cards.concat(cardsPagination.createRandomCards(8));
+                while (!correctArr) {
+                    current = cardsPagination.createRandomCards(8);
+                    correctArr = firstFourNotContainsTwoLast(current);
+                }
+                correctArr = false;
+                while (!correctArr) {
+                    current = cardsPagination.createRandomCards(8);
+                    correctArr = firstTwoNotContainsFourLast(current);
+                }
+                correctArr = false
+            }
+
+
         }
         createPagesCards = () => {
-            this.pages = {}
+
             const copyCards = Array.from(this.cards)
             const numAllPages = Math.ceil(this.cards.length / this.places);
             for (let i = 0; i < numAllPages; i++) {
@@ -492,5 +529,4 @@ const popupModule = () => {
 window.onload = popupModule;
 const $parent = document.querySelector('.our-friends-section');
 $parent.onclick = popupModule;
-
 
