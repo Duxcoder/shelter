@@ -1,7 +1,7 @@
 'use strict'
 
 /// PopUp
-const popupModule = () => {
+const popupModule = (srcImg = '../') => {
     const btns = document.querySelectorAll('[data-showcard]');
     const popup = document.querySelector('.pop-up-container');
     const closeESC = (e) => {
@@ -16,7 +16,7 @@ const popupModule = () => {
         $popup.innerHTML = `
       <button class="btn-circle btn-circle__transparent pop-up-close"></button>
         <div class="pop-up__img-box">
-          <img src="../${picture}" alt="dog" class="pop-up-img">
+          <img src="${srcImg}${picture}" alt="dog" class="pop-up-img">
         </div>
         <div class="pop-up__content">
           <div class="pop-up__title">${name}</div>
@@ -181,7 +181,7 @@ const sliderModule = () => {
             next ? this.cardsOnPage.push(card) : this.cardsOnPage.unshift(card);
             next ? this.$cardsOnPage.push($card) : this.$cardsOnPage.unshift($card);
             next ? this.$parentContainer.append($card) : this.$parentContainer.prepend($card);
-            popupModule();
+            popupModule('./');
         }
         nextCard() {
             const setTranslate = (translateX, left) => {
