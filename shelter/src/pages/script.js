@@ -274,7 +274,8 @@ const hamburgerModule = () => {
     const handler = function () {
         nav.classList.toggle('navigation__active');
         const setHeight = (value) => header.style.height = value
-        isOpenBurger() ? setHeight('100vh') : setTimeout(setHeight, 400, 'auto')
+        isOpenBurger() ? setHeight('100vh') : setTimeout(setHeight, 400, 'auto');
+        this.classList.toggle('animate');
         logo.style.pointerEvents = logo.style.pointerEvents === 'none' ? 'auto' : 'none'
     }
     const closeOverflow = function (e) {
