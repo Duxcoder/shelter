@@ -6,7 +6,7 @@ const popupModule = (srcImg = '../') => {
     const popup = document.querySelector('.pop-up-container');
     const closeESC = (e) => {
         if (e.key === 'Escape') popup.classList.remove('open');
-        document.body.style.overflow = '';
+        document.body.classList.remove('overflower');
         document.onkeydown = null
     }
     const renderContent = (dataCard) => {
@@ -67,14 +67,15 @@ const popupModule = (srcImg = '../') => {
             }
         })
         popup.classList.add('open');
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('overflower');
+
         document.onkeydown = closeESC;
         const btnClose = document.querySelector('.pop-up-close');
         btnClose.onclick = closePopUp;
     }
     const closePopUp = () => {
         popup.classList.remove('open');
-        document.body.style.overflow = '';
+        document.body.classList.remove('overflower');
     }
     const closePopUpOverflow = (e) => {
         !e.target.closest('.pop-up') ? closePopUp() : null
@@ -274,7 +275,6 @@ const hamburgerModule = () => {
         nav.classList.toggle('navigation__active');
         const setHeight = (value) => header.style.height = value
         isOpenBurger() ? setHeight('100vh') : setTimeout(setHeight, 400, 'auto')
-        this.classList.toggle('animate');
         logo.style.pointerEvents = logo.style.pointerEvents === 'none' ? 'auto' : 'none'
     }
     const closeOverflow = function (e) {
@@ -298,7 +298,6 @@ const paginationModule = () => {
     class Pagination {
         constructor(parentContainerClass) {
             this.$parentContainer = document.querySelector(parentContainerClass);
-            this.$parentContainer.classList.toggle('animates')
             this.cards = [];
             this.pages = {};
             this.places = null;
@@ -370,21 +369,43 @@ const paginationModule = () => {
             `
             return $card
         }
-        renderPage = (numPage) => {
+        renderPage = (numPage, isClickLeft = null) => {
             this.currentNumberPage = numPage;
-            this.$parentContainer.innerHTML = '';
-            this.pages[numPage].forEach(card => {
-                const $card = this.createHtmlCard(card);
-                console.log('обработчик назначен', $card.onclick)
-                this.$parentContainer.append($card);
-            })
-            popupModule();
+            const render = () => {
+                this.$parentContainer.innerHTML = '';
+                this.pages[numPage].forEach(card => {
+                    const $card = this.createHtmlCard(card);
+                    this.$parentContainer.append($card);
+                })
+                popupModule();
+            }
+            if ((isClickLeft) === null) render();
+            setTimeout(() => {
+                document.querySelector('.our-friends__cards').classList.remove('animateLeft', 'animateRight');
+                const clickLeft = () => document.querySelector('.our-friends__cards').classList.add('animateRightRevert');
+                const clickRight = () => document.querySelector('.our-friends__cards').classList.add('animateLeftRevert')
+                if ((isClickLeft) !== null) {
+                    isClickLeft ? clickLeft() : clickRight();
+                    render();
+                }
+            }, 400)
         }
     }
     class PaginationControls {
         constructor(btnCurrent) {
             this.btnCurrent = btnCurrent
             this.currentNumberPage = 1;
+            this.isClickLeft = null
+        }
+        animateClickRight = () => {
+            this.isClickLeft = false;
+            document.querySelector('.our-friends__cards').classList.remove('animateLeftRevert', 'animateRightRevert')
+            document.querySelector('.our-friends__cards').classList.add('animateLeft')
+        }
+        animateClickLeft = () => {
+            this.isClickLeft = true;
+            document.querySelector('.our-friends__cards').classList.remove('animateLeftRevert', 'animateRightRevert')
+            document.querySelector('.our-friends__cards').classList.add('animateRight')
         }
         update = (placesForCards) => {
             const numPages = Math.round(pagination.getCards().length / placesForCards);
@@ -392,28 +413,26 @@ const paginationModule = () => {
             this.submitToRender();
         }
         submitToRender = () => {
-            // animate
-            document.querySelector('.our-friends__cards').classList.toggle('animates')
-            document.querySelector('.our-friends__cards').classList.toggle('animate')
-            //
-            setTimeout(() => {
-                pagination.renderPage(this.currentNumberPage);
+                pagination.renderPage(this.currentNumberPage, this.isClickLeft);
                 this.btnCurrent.textContent = this.currentNumberPage;
-            }, 150)
         }
         first = () => {
+            this.animateClickLeft();
             this.currentNumberPage = 1;
             this.submitToRender();
         }
         prev = () => {
+            this.animateClickLeft();
             this.currentNumberPage--;
             this.submitToRender();
         }
         next = () => {
+            this.animateClickRight();
             this.currentNumberPage++;
             this.submitToRender();
         }
         last = () => {
+            this.animateClickRight();
             this.currentNumberPage = Object.keys(pagination.getPages()).length
             this.submitToRender();
         }

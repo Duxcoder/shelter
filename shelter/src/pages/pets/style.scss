@@ -1,7 +1,9 @@
 /// Header pets
 .header {
   &.pets {
-    .hamburger-menu, .menu-wrapper:before, .menu-wrapper:after {
+    .hamburger-menu,
+    .menu-wrapper:before,
+    .menu-wrapper:after {
       background: #000000;
     }
     .top-bar {
@@ -52,34 +54,96 @@
           row-gap: 30px;
           column-gap: 40px;
           padding: 59px 0;
-          &.animate {
-            @keyframes animate {
+          &.animateLeft {
+            @keyframes animateLeft {
               0% {
                 opacity: 1;
+                transform: translateX(0px);
               }
-              50% {
+              100% {
                 opacity: 0;
+                transform: translateX(-100px);
+              }
+            }
+            animation: animateLeft 0.3s;
+            animation-timing-function: ease-in;
+
+            opacity: 0;
+            transform: translateX(-100px);
+          }
+          &.animateLeftRevert {
+            @keyframes animateLeftRevert {
+              0% {
+                opacity: 0;
+                transform: translateX(100px);
               }
               100% {
                 opacity: 1;
+                transform: translateX(0px);
               }
             }
-          animation: animate 0.3s;
+            animation: animateLeftRevert 0.3s forwards;
+            animation-timing-function: ease-out;
           }
-          &.animates {
-            @keyframes animates {
+          &.animateRight {
+            @keyframes animateRight {
               0% {
                 opacity: 1;
+                transform: translateX(0px);
               }
-              50% {
+              100% {
                 opacity: 0;
+                transform: translateX(100px);
+              }
+            }
+            animation: animateRight 0.3s;
+            animation-timing-function: ease-in;
+
+            opacity: 0;
+            transform: translateX(100px);
+          }
+          &.animateRightRevert {
+            @keyframes animateRightRevert {
+              0% {
+                opacity: 0;
+                transform: translateX(-100px);
               }
               100% {
                 opacity: 1;
+                transform: translateX(0px);
               }
             }
-          animation: animates 0.3s;
+            animation: animateRightRevert 0.3s forwards;
+            animation-timing-function: ease-out;
           }
+          // &.animate {
+          //   @keyframes animate {
+          //     0% {
+          //       opacity: 1;
+          //     }
+          //     50% {
+          //       opacity: 0;
+          //     }
+          //     100% {
+          //       opacity: 1;
+          //     }
+          //   }
+          // animation: animate 0.3s;
+          // }
+          // &.animates {
+          //   @keyframes animates {
+          //     0% {
+          //       opacity: 1;
+          //     }
+          //     50% {
+          //       opacity: 0;
+          //     }
+          //     100% {
+          //       opacity: 1;
+          //     }
+          //   }
+          // animation: animates 0.3s;
+          // }
         }
         .our-friends__pagination {
           display: flex;

@@ -86,6 +86,11 @@ h1.our-friends__title {
   letter-spacing: 0.06em;
   color: #545454;
 }
+.overflower {
+  overflow: hidden;
+  touch-action: none;
+  -ms-touch-action: none;
+}
 .disabled {
   pointer-events: none;
   cursor: default;
