@@ -4,7 +4,7 @@
   "description": "Shelter project for RSSchool task",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "gulp serve"
   },
   "author": "duxcoder",
   "license": "ISC",
