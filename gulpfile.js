@@ -4,8 +4,6 @@ const concat = require('gulp-concat')
 const autoprefix = require('gulp-autoprefixer')
 const csso = require('gulp-csso')
 const include = require('gulp-file-include')
-// import {deleteAsync} from 'del';
-const htmlmin = require('gulp-htmlmin')
 const sync = require('browser-sync').create()
 const imagemin = require('gulp-imagemin');
 
@@ -33,7 +31,7 @@ function img() {
 }
 
 function html() {
-    return src('src/pages/*.html')
+    return src('src/pages/main/*.html')
         .pipe(include())
         .pipe(dest('dist'))
         .pipe(src('src/pages/pets/*.html'))
@@ -45,7 +43,7 @@ function html() {
 }
 
 function scss() {
-    return src(['src/pages/*.scss', 'src/pages/pets/*.scss'])
+    return src(['src/assets/styles/*.scss', 'src/pages/main/*.scss', 'src/pages/pets/*.scss'])
         .pipe(sass())
         .pipe(autoprefix())
         .pipe(csso())
@@ -59,9 +57,9 @@ function serve() {
             server: './dist'
         }
     )
-    watch(['src/pages/*.html', 'src/pages/pets/*.html'], series(html)).on('all', sync.reload)
-    watch(['src/pages/*.scss', 'src/pages/pets/*.scss'], series(scss)).on('all', sync.reload)
-    watch(['src/pages/*.js', 'src/pages/pets/*.js'], series(js)).on('all', sync.reload)
+    watch(['src/pages/main/*.html', 'src/pages/pets/*.html'], series(html)).on('all', sync.reload)
+    watch(['src/assets/styles/*.scss', 'src/pages/main/*.scss', 'src/pages/pets/*.scss'], series(scss)).on('all', sync.reload)
+    watch(['src/pages/main/*.js', 'src/pages/pets/*.js'], series(js)).on('all', sync.reload)
 
 }
 
