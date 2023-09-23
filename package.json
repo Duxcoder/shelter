@@ -4,6 +4,7 @@
   "description": "Shelter project for RSSchool task",
   "main": "index.js",
   "scripts": {
+    "build": "gulp build",
     "serve": "gulp serve"
   },
   "author": "duxcoder",
