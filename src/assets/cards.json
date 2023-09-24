@@ -1,6 +1,6 @@
 [
   {
-    "picture": "images/katrine.png",
+    "picture": "images/katrine.webp",
     "name": "Katrine",
     "alt": "Pet Katrine",
     "link": "katrine",
@@ -14,7 +14,7 @@
     "id": 0
   },
   {
-    "picture": "images/jennifer.png",
+    "picture": "images/jennifer.webp",
     "name": "Jennifer",
     "alt": "Pet Jennifer",
     "link": "jennifer",
@@ -28,7 +28,7 @@
     "id": 1
   },
   {
-    "picture": "images/woody.png",
+    "picture": "images/woody.webp",
     "name": "Woody",
     "alt": "Pet Woody",
     "link": "woody",
@@ -42,7 +42,7 @@
     "id": 2
   },
   {
-    "picture": "images/sophia.png",
+    "picture": "images/sophia.webp",
     "name": "Sophia",
     "alt": "Pet Sophia",
     "link": "sophia",
@@ -56,7 +56,7 @@
     "id": 3
   },
   {
-    "picture": "images/timmy.png",
+    "picture": "images/timmy.webp",
     "name": "Timmy",
     "alt": "Pet Timmy",
     "link": "timmy",
@@ -70,7 +70,7 @@
     "id": 4
   },
   {
-    "picture": "images/charly.png",
+    "picture": "images/charly.webp",
     "name": "Charly",
     "alt": "Pet Charly",
     "link": "charly",
@@ -84,7 +84,7 @@
     "id": 5
   },
   {
-    "picture": "images/scarlett.png",
+    "picture": "images/scarlett.webp",
     "name": "Scarlett",
     "alt": "Pet Scarlett",
     "link": "scarlett",
@@ -98,7 +98,7 @@
     "id": 6
   },
   {
-    "picture": "images/freddie.png",
+    "picture": "images/freddie.webp",
     "name": "Freddie",
     "alt": "Pet Freddie",
     "link": "freddie",

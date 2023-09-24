@@ -6,7 +6,13 @@ const csso = require('gulp-csso')
 const include = require('gulp-file-include')
 const sync = require('browser-sync').create()
 const imagemin = require('gulp-imagemin');
-
+const styles = [
+    'src/assets/styles/normalize.scss',
+    'src/assets/styles/assets.scss',
+    'src/assets/styles/burger-icon.scss',
+    'src/pages/main/*.scss',
+    'src/pages/pets/*.scss'
+]
 
 function js() {
     return src('src/*.js')
@@ -25,7 +31,7 @@ function fonts() {
 
 
 function img() {
-    return src(['src/assets/images/*.{jpg,png,gif,svg}', 'src/assets/icons/*.{jpg,png,gif,svg}'])
+    return src(['src/assets/images/*.{jpg,png,gif,svg,webp}', 'src/assets/icons/*.{jpg,png,gif,svg}'])
         .pipe(imagemin())
         .pipe(dest('dist/images'));
 }
@@ -43,7 +49,7 @@ function html() {
 }
 
 function scss() {
-    return src(['src/assets/styles/*.scss', 'src/pages/main/*.scss', 'src/pages/pets/*.scss'])
+    return src(styles)
         .pipe(sass())
         .pipe(autoprefix())
         .pipe(csso())
@@ -58,7 +64,7 @@ function serve() {
         }
     )
     watch(['src/pages/main/*.html', 'src/pages/pets/*.html'], series(html)).on('all', sync.reload)
-    watch(['src/assets/styles/*.scss', 'src/pages/main/*.scss', 'src/pages/pets/*.scss'], series(scss)).on('all', sync.reload)
+    watch(styles, series(scss)).on('all', sync.reload)
     watch('src/*.js', series(js)).on('all', sync.reload)
 
 }

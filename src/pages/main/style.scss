@@ -113,7 +113,7 @@
       }
     }
     .start-screen-dog {
-      background-image: url("./images/mainDog.png");
+      background-image: url("./images/mainDog.webp");
       width: calc(100% - 460px - 24px);
       margin-left: 24px;
       min-width: 350px;
@@ -299,7 +299,7 @@
       gap: 30px;
       padding: 80px 0 99px 0;
       .donation__dog {
-        background-image: url("./images/don-dog.png");
+        background-image: url("./images/don-dog.webp");
         width: 100%;
         max-width: 505px;
         height: 261px;
@@ -458,7 +458,7 @@
     .footer-content__dog {
       width: 300px;
       height: 310px;
-      background-image: url("./images/footer-dog.png");
+      background-image: url("./images/footer-dog.webp");
       background-repeat: no-repeat;
       background-position: bottom;
     }
