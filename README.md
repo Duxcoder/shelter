@@ -7,7 +7,7 @@
 
 🖼 Maket (PerfectPixel): [Figma](https://www.figma.com/file/Yk6EnbY63FyG2PJTFkJDMh/shelter?type=design&node-id=94-43&mode=design)
 
-💻 Deploy (Multipage): [Link](duxcoder.github.io/shelter)
+💻 Deploy (Multipage): [Link](https://duxcoder.github.io/shelter)
 
 
 
