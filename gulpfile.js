@@ -9,7 +9,7 @@ const imagemin = require('gulp-imagemin');
 
 
 function js() {
-    return src('src/pages/*.js')
+    return src('src/*.js')
         .pipe(dest('dist'));
 }
 
@@ -59,7 +59,7 @@ function serve() {
     )
     watch(['src/pages/main/*.html', 'src/pages/pets/*.html'], series(html)).on('all', sync.reload)
     watch(['src/assets/styles/*.scss', 'src/pages/main/*.scss', 'src/pages/pets/*.scss'], series(scss)).on('all', sync.reload)
-    watch(['src/pages/main/*.js', 'src/pages/pets/*.js'], series(js)).on('all', sync.reload)
+    watch('src/*.js', series(js)).on('all', sync.reload)
 
 }
 

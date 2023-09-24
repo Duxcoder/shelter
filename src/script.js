@@ -1,6 +1,6 @@
 'use strict'
 
-/// PopUp
+// PopUp
 const popupModule = (srcImg = '../') => {
     const btns = document.querySelectorAll('[data-showcard]');
     const popup = document.querySelector('.pop-up-container');
@@ -414,8 +414,8 @@ const paginationModule = () => {
             this.submitToRender();
         }
         submitToRender = () => {
-                pagination.renderPage(this.currentNumberPage, this.isClickLeft);
-                this.btnCurrent.textContent = this.currentNumberPage;
+            pagination.renderPage(this.currentNumberPage, this.isClickLeft);
+            this.btnCurrent.textContent = this.currentNumberPage;
         }
         first = () => {
             this.animateClickLeft();
