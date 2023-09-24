@@ -66,11 +66,7 @@ function serve() {
     watch(['src/pages/main/*.html', 'src/pages/pets/*.html'], series(html)).on('all', sync.reload)
     watch(styles, series(scss)).on('all', sync.reload)
     watch('src/*.js', series(js)).on('all', sync.reload)
-
 }
-
-
-
 
 exports.build = series(scss, html, img, js, jsons, fonts)
 exports.serve = series(scss, html, img, js, jsons, fonts, serve)

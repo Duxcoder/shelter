@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>`
             return $popup
         }
-        const handler = function (e) {
+        const handler = function () {
             popup.innerHTML = '';
             const sourceCards = document.querySelector('.pets') ? cardsPagination.getCards() : cardsSlider.getCards();
             sourceCards.forEach(card => {
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return places
         }
         placesForCards = checkWindowSize()
-        window.addEventListener('resize', (e) => {
+        window.addEventListener('resize', () => {
             let prevPlaces = placesForCards;
             placesForCards = checkWindowSize()
             prevPlaces !== placesForCards && (slider.startSlider(cardsSlider.createRandomCards(placesForCards)))
